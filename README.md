@@ -1,4 +1,4 @@
-# Atividade Final de Programação Web
+![Logo IFPA](img/Logo_IFPA.png) # Atividade Final de Programação Web
 Atividade final proposta pelo professor Cláudio Martins como objeto de avaliação para a disciplina de programação web.
 
 ### Introdução
@@ -6,7 +6,7 @@ Este projeto é uma aplicação web de Carrinho de Compras. Ele permite aos usu�
 
 ### Estrutura do Projeto
 1. Ferramentas e Frameworks utilizados no desenvolvimento deste projeto:
-    1. ![Logo VS Code](css/logo-vscode-1.png)
+    1. ![Logo VS Code](img/Logo_IFPA.png)
     2. ![Logo Git](css/git-logo.png)
 
 2. Descrição do arquivo index.html:
