@@ -1,4 +1,4 @@
-![Logo IFPA](img/Logo_IFPA.png) # Atividade Final de Programação Web
+![Logo IFPA](img/LogoIFPA.png) # Atividade Final de Programação Web
 Atividade final proposta pelo professor Cláudio Martins como objeto de avaliação para a disciplina de programação web.
 
 ### Introdução
@@ -6,8 +6,8 @@ Este projeto é uma aplicação web de Carrinho de Compras. Ele permite aos usu�
 
 ### Estrutura do Projeto
 1. Ferramentas e Frameworks utilizados no desenvolvimento deste projeto:
-    1. ![Logo Bootstrap](img/bootstrap-logo.png)
-    2. ![Logo Supabase](img/supabase-logo.png)
+    1. ![Logo Bootstrap](img/LogoBootstrap.png)
+    2. ![Logo Supabase](img/LogoSupabase.png)
 
 2. Descrição do arquivo index.html:
    1. Arquivo HTML principal que contém a estrutura básica da aplicação web e inclui as bibliotecas Vue.js e Bootstrap. Também contém o script com a lógica da aplicação 
