@@ -6,8 +6,8 @@ Este projeto é uma aplicação web de Carrinho de Compras. Ele permite aos usu�
 
 ### Estrutura do Projeto
 1. Ferramentas e Frameworks utilizados no desenvolvimento deste projeto:
-    1. ![Logo VS Code](img/Logo_IFPA.png)
-    2. ![Logo Git](css/git-logo.png)
+    1. ![Logo Bootstrap](img/bootstrap-logo.png)
+    2. ![Logo Supabase](css/supa-logo.png)
 
 2. Descrição do arquivo index.html:
    1. Arquivo HTML principal que contém a estrutura básica da aplicação web e inclui as bibliotecas Vue.js e Bootstrap. Também contém o script com a lógica da aplicação 
