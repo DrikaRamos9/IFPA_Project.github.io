@@ -1,4 +1,4 @@
-![Logo IFPA](img/slides/3.png) 
+![Logo IFPA](img/LOGO-IFPA.png) 
 
 # Atividade Final de Programação Web
 Atividade final proposta pelo professor Cláudio Martins como objeto de avaliação para a disciplina de programação web.
