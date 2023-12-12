@@ -2,6 +2,7 @@
 
 # Atividade Final de Programação Web
 Atividade final proposta pelo professor Cláudio Martins como objeto de avaliação para a disciplina de programação web.
+Aluna: Adriele Camila da Costa Ramos
 
 ### Introdução
 Este projeto é uma aplicação web de Carrinho de Compras. Ele permite aos usuários visualizar uma lista de produtos, adicionar ou remover produtos ao carrinho e finalizar a compra, que é salva em uma tabela no Supabase.
