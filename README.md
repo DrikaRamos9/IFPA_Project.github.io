@@ -2,8 +2,11 @@
 
 # Atividade Final de Programação Web
 Atividade final proposta pelo professor Cláudio Martins como objeto de avaliação para a disciplina de programação web.
+
 Aluna: Adriele Camila da Costa Ramos
+
 Curso: Tecnólogo em Análise e Desenvolvimento de Sistemas
+
 Turno: Tarde
 
 ### Introdução
@@ -24,6 +27,9 @@ Este projeto é uma aplicação web de Carrinho de Compras. Ele permite aos usu�
    
    3. O script da lógica com Vue.js possui os campos com as credenciais para acesso a API do Supabase, as funções para Adicionar os produtos ao carrinho, Remover produtos do carrinho,
       Calcular o total dos valores dos produtos e Finalizar compra.
+
+### Acesse a página do projeto no GitHubPages clicando no link abaixo
+https://drikaramos9.github.io/IFPA_ProgWeb.github.io/
 
 ### Funcionalidades
 * Consulta de Produtos: Visualize uma lista de produtos com nome, preço e imagem.
