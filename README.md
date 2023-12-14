@@ -27,6 +27,7 @@ Este projeto é uma aplicação web de Carrinho de Compras. Ele permite aos usu�
    
    3. O script da lógica com Vue.js possui os campos com as credenciais para acesso a API do Supabase, as funções para Adicionar os produtos ao carrinho, Remover produtos do carrinho,
       Calcular o total dos valores dos produtos e Finalizar compra.
+3. Pasta IMG contém as imagens utilizadas no projeto.
 
 ### Acesse a página do projeto no GitHubPages clicando no link abaixo
 https://drikaramos9.github.io/IFPA_ProgWeb.github.io/
