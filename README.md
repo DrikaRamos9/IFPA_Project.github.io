@@ -30,7 +30,7 @@ Este projeto é uma aplicação web de Carrinho de Compras. Ele permite aos usu�
 3. Pasta IMG contém as imagens utilizadas no projeto.
 
 ### Acesse a página do projeto no GitHubPages clicando no link abaixo
-https://drikaramos9.github.io/IFPA_ProgWeb.github.io/
+https://drikaramos9.github.io/IFPA_Project.github.io/
 
 ### Funcionalidades
 * Consulta de Produtos: Visualize uma lista de produtos com nome, preço e imagem.
