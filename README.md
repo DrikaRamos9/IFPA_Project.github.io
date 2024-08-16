@@ -1,39 +1,30 @@
 ![Logo IFPA](img/LOGO-IFPA.png) 
 
-# Atividade Final de Programação Web
-Atividade final proposta pelo professor Cláudio Martins como objeto de avaliação para a disciplina de programação web.
+# Projeto GACWeb IFPA
+Projeto de desenvolvimento de sistema web para Gerenciamento de Atividades Complementares para cursos de graduação do IFPA campus Belém.
 
 Aluna: Adriele Camila da Costa Ramos
 
 Curso: Tecnólogo em Análise e Desenvolvimento de Sistemas
 
-Turno: Tarde
-
 ### Introdução
-Este projeto é uma aplicação web de Carrinho de Compras. Ele permite aos usuários visualizar uma lista de produtos, adicionar ou remover produtos ao carrinho e finalizar a compra, que é salva em uma tabela no Supabase.
+Este projeto é uma aplicação web para gestão. Ele permite aos usuários (alunos e coordenadores) gerenciar atividades complementares, com operações básicas do Banco de Dados, como CRUD (Create, Read, Update e Delete).
 
 ### Estrutura do Projeto
 1. Ferramentas e Frameworks utilizados no desenvolvimento deste projeto:
     1. ![Logo Bootstrap](img/LogoBootstrap.png)
-    2. ![Logo Supabase](img/LogoSupabase.png)
+    2. 
 
-2. Descrição do arquivo index.html:
-   1. Arquivo HTML principal que contém a estrutura básica da aplicação web e inclui as bibliotecas Vue.js e Bootstrap. Também contém o script com a lógica da aplicação 
-      Vue.js, incluindo a manipulação do carrinho, a consulta de produtos e o checkout no Supabase.
-      
-   2. A estruturação do código HTML foi feita com tags padrão no cabeçalho fazendo a importação das bibliotecas dos frameworks. Inicia com a criação da Barra de Navegação no topo da
-      página, em seguida temos as tags para a criação do Carrossel, Região do Conteúdo Principal com a lista dos produtos e do carrinho, e por fim, o rodapé da página com algumas 
-      informções simples.
+2. Descrição do arquivo "index.html":
+   1. Arquivo HTML principal que contém a tela de login utilizando de algumas bibliotecas, também contém a seção do estilo (CSS).
    
-   3. O script da lógica com Vue.js possui os campos com as credenciais para acesso a API do Supabase, as funções para Adicionar os produtos ao carrinho, Remover produtos do carrinho,
-      Calcular o total dos valores dos produtos e Finalizar compra.
-3. Pasta IMG contém as imagens utilizadas no projeto.
+3. Descrição do arquivo "scriptTelaLogin.js":
+   1. Arquivo JavaScript com a lógica de programação utilizando o WebStorage do navegador para armazenar as informações, apenas para teste.
 
-### Acesse a página do projeto no GitHubPages clicando no link abaixo
+4. Pasta IMG contém as imagens utilizadas no projeto.
+
+### Acesse a página do projeto no GitHubPages clicando no link abaixo ou copiando a URL no navegador
 https://drikaramos9.github.io/IFPA_Project.github.io/
 
 ### Funcionalidades
-* Consulta de Produtos: Visualize uma lista de produtos com nome, preço e imagem.
-* Adição de Produto ao Carrinho: Adicione produtos ao carrinho com um clique no botão "Adicionar ao Carrinho".
-* Remoção de Produto ao Carrinho: Remova produtos do carrinho com um clique no botão "Remover".
-* Finalização da Compra: Finalize a compra clicando no botão "Finalizar Compra".
+* Ainda a definir.
