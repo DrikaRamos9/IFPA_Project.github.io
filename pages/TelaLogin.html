@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Tela de Login</title>
+
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Icons -->
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+    <link rel="preload" href="https://use.fontawesome.com/releases/v5.7.2/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+    <!-- Fonts Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Contrail+One&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+        background-image: url(./Imgs/Foto\ de\ Soumil\ Kumar.jpg);
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden
+        }
+
+        .title-head{
+        font-family: "Contrail One", sans-serif;
+        color: white;
+        margin-bottom: -20px;
+        }
+
+        h4{
+        font-size: 40px;
+        }
+
+        p{
+        font-weight: 400;
+        font-size: 15px;
+        }
+
+        .card{
+        border: none;
+        border-top: 5px solid  rgb(61, 90, 253);
+        background: #212042dc;
+        color: #b8b8bb;
+        margin-top: 40px;
+        }
+
+        .division{
+        float: none;
+        position: relative;
+        margin: 30px auto 20px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        }
+
+        .division .line{
+        border-top: 1.5px solid #57557A;;
+        position: absolute;
+        top: 13px;
+        width: 85%;
+        }
+
+        /* Posição da linha esquerda */
+        .line.l{
+        left: 20px;
+        }
+
+        /* Posição da linha direita */
+        .line.r{
+	    right: 20px;
+        }
+
+        .division span{
+        font-weight: 600;
+        font-size: 14px;
+        }
+
+        .myform-input{
+        padding: 0 25px 0 33px;
+        }
+
+        .form-control{
+        /*border: 1px solid #57557A;
+        border-radius: 3px;
+        background: #212042;
+        margin-bottom: 20px;
+        letter-spacing: 1px;*/
+
+        border: none;
+        border-bottom: 1px solid #e9e2e2;
+        outline: none;
+        color: #fff;
+        background: #4241637c;
+        font-size: 16px;
+        padding-left: 20px;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        }
+
+        .form-control:focus{
+        border: 1px solid #486f7e;
+        border-radius: 3px;
+        box-shadow: none;
+        background: #424163d8;
+        color: #fff;
+        letter-spacing: 1px;
+        }
+
+        .bn{
+        text-decoration: none;
+        }
+
+        .bn:hover{
+        cursor: pointer;
+        color: rgb(65, 125, 173);
+        }
+
+        .link-cad {
+        text-align: right;
+        }
+
+        .link-cad a:hover {
+        cursor: pointer;
+        }
+
+        .btn-primary{
+        background: linear-gradient(135deg, rgb(10, 4, 41) 39%,rgb(32, 35, 219) 101%);
+        border: none;
+        border-radius: 50px;
+        }
+
+        .btn-primary:focus{
+        box-shadow: none;
+        border: none;
+        }
+
+        .btn-primary:hover{
+        color: #75cef7;
+        }
+
+        .far.fa-user{
+        font-size: 13px;
+        }
+
+        /* For mobile phones: */
+        @media (max-width: 767px) {
+        .foot{display: flex; flex-direction: column;}
+        .foot .link-cad {margin-top: -25px;}
+        }
+
+        @media(max-width: 400px){
+        .foot{display: flex; flex-direction: column;}
+        .foot .col-md-6{text-align: center; width: auto; align-items: center; margin-top: auto;}
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row d-flex justify-content-center mt-5">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+                <div class="card py-3 px-2">
+                    
+                    <!-- Seção Título -->
+                    <div class="text-center mt-2 title-head">
+                        <h4>GACWeb IFPA</h4>
+                        <p>GERENCIADOR DE ATIVIDADES COMPLEMENTARES</p>
+                    </div>
+
+                    <!-- Linha Divisão -->
+                    <div class="division">
+                        <div class="row">
+                            <div class="col-3"><div class="line l"></div></div>
+                            <div class="col-6"><span>Entrar com usuário e senha</span></div>
+                            <div class="col-3"><div class="line r"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Formulário Login -->
+                    <form class="myform-input">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="inputuser" placeholder="Usuário" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="inputsenha" placeholder="Senha" required>
+                        </div>
+
+                        <div class="row foot">
+                            <div class="col-md-6 col-12 bn">Esqueceu a senha?</div>
+                            <div class="col-md-6 col-12 link-cad"><a href="./TelaCadastroAluno.html">Não possui cadastro?</a></div>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <button onclick="entrar()" type="submit" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Entrar</small></button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script src="./scriptTelaLogin.js">
+    </script>
+</body>
+</html>
