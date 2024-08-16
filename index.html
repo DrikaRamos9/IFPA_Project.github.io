@@ -22,10 +22,11 @@
     <style>
         body{
         background-image: url(./img/Foto\ de\ Soumil\ Kumar.jpg);
-        height: 100vh;
-        background-size: cover;
+        min-height: 100vh;
+        background-size: cover; /*garante que a imagem cubra toda a área disponível, mas pode cortar partes da imagem para manter a proporção.*/
         background-position: center;
-        overflow: hidden
+        background-repeat: no-repeat;
+        overflow: hidden /*evitar barras de rolagem*/
         }
 
         .title-head{
@@ -114,20 +115,13 @@
         }
 
         .bn{
-        text-decoration: none;
-        }
-
-        .bn:hover{
-        cursor: pointer;
-        color: rgb(65, 125, 173);
+        text-align: left;
+        font-size: 14px;
         }
 
         .link-cad {
         text-align: right;
-        }
-
-        .link-cad a:hover {
-        cursor: pointer;
+        font-size: 14px;
         }
 
         .btn-primary{
@@ -142,7 +136,7 @@
         }
 
         .btn-primary:hover{
-        color: #75cef7;
+        color: #000000;
         }
 
         .far.fa-user{
@@ -152,7 +146,7 @@
         /* For mobile phones: */
         @media (max-width: 767px) {
         .foot{display: flex; flex-direction: column;}
-        .foot .link-cad {margin-top: -25px;}
+        .foot .link-cad {text-align: left;}
         }
 
         @media(max-width: 400px){
@@ -166,12 +160,21 @@
             padding: 20px;
             font-size: 1.5rem;
         }
+
+        body {
+            background-size: cover; /* Garante que cubra a tela inteira em desktops grandes */
+        }
         }
 
         @media (max-width: 768px) {
             .custom-small {
                 padding: 10px;
                 font-size: 1rem;
+            }
+
+            body {
+                background-size: auto 100%; /* Ajusta a imagem para caber na altura em telas menores */
+                background-position: top center; /* Foca no topo da imagem em telas pequenas */
             }
         }
 
@@ -198,7 +201,7 @@
                     <div class="division">
                         <div class="row">
                             <div class="col-3"><div class="line l"></div></div>
-                            <div class="col-6"><span>Entrar com usuário e senha</span></div>
+                            <div class="col-6"><span>Entrar com usuário</span></div>
                             <div class="col-3"><div class="line r"></div></div>
                         </div>
                     </div>
@@ -215,7 +218,7 @@
                         </div>
 
                         <div class="row foot">
-                            <div class="col-md-6 col-12 bn">Esqueceu a senha?</div>
+                            <div class="col-md-6 col-12 bn"><a href="./TelaCadastroAluno.html">Esqueceu a senha?</a></div>
                             <div class="col-md-6 col-12 link-cad"><a href="./TelaCadastroAluno.html">Não possui cadastro?</a></div>
                         </div>
 
