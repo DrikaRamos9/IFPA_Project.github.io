@@ -26,7 +26,9 @@
         background-size: cover; /*garante que a imagem cubra toda a área disponível, mas pode cortar partes da imagem para manter a proporção.*/
         background-position: center;
         background-repeat: no-repeat;
-        overflow: hidden /*evitar barras de rolagem*/
+        overflow: hidden; /*evitar barras de rolagem*/
+        display: flex;
+        align-items: center;
         }
 
         .title-head{
@@ -44,12 +46,15 @@
         font-size: 15px;
         }
 
+        .container {
+            background-color: #e9e2e2;
+        }
+
         .card{
         border: none;
         border-top: 5px solid  rgb(61, 90, 253);
         background: #212042dc;
         color: #b8b8bb;
-        margin-top: 40px;
         }
 
         .division{
@@ -149,28 +154,12 @@
         .foot .link-cad {text-align: left;}
         }
 
-        @media(max-width: 400px){
+        @media(max-width: 450px){
         .foot{display: flex; flex-direction: column;}
         .foot .col-md-6{text-align: center; width: auto; align-items: center; margin-top: auto;}
         }
-
-        /* For Desktop */
-        @media (min-width: 1200px) {
-        .custom-large {
-            padding: 20px;
-            font-size: 1.5rem;
-        }
-
-        body {
-            background-size: cover; /* Garante que cubra a tela inteira em desktops grandes */
-        }
-        }
-
+        
         @media (max-width: 768px) {
-            .custom-small {
-                padding: 10px;
-                font-size: 1rem;
-            }
 
             body {
                 background-size: auto 100%; /* Ajusta a imagem para caber na altura em telas menores */
@@ -178,6 +167,22 @@
             }
         }
 
+        /* For Desktop */
+        @media (min-width: 1000px) {
+
+        body {
+            background-size: cover; /* Garante que cubra a tela inteira em desktops grandes */
+        }
+
+        .custom-card {
+            max-width: 700px; /* Ajuste conforme necessário */
+        }
+
+        .container {
+            background-color: aqua;
+        }
+
+        }
         
     </style>
 
@@ -186,8 +191,8 @@
 <body>
 
     <div class="container">
-        <div class="row d-flex justify-content-center mt-5">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5 custom-card">
 
                 <div class="card py-3 px-2">
                     
