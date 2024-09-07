@@ -34,7 +34,6 @@ function entrar () {
 
     // Verificação de usuário e senha vazios
     if(inputuser.value == "" && inputsenha.value == ""){
-        alert("Insira seu usuário e senha.")
         return false
     }
 
