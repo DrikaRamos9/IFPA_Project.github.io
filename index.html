@@ -19,164 +19,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Contrail+One&display=swap" rel="stylesheet">
 
-    <style>
-        body{
-        background-image: url(./img/Foto\ de\ Soumil\ Kumar.jpg);
-        min-height: 100vh;
-        background-size: cover; /*garante que a imagem cubra toda a área disponível, mas pode cortar partes da imagem para manter a proporção.*/
-        background-position: center;
-        background-repeat: no-repeat;
-        overflow: hidden; /*evitar barras de rolagem*/
-        display: flex;
-        align-items: center;
-        }
-
-        .title-head{
-        font-family: "Contrail One", sans-serif;
-        color: white;
-        margin-bottom: -20px;
-        }
-
-        h4{
-        font-size: 40px;
-        }
-
-        p{
-        font-weight: 400;
-        font-size: 15px;
-        }
-
-        .card{
-        border: none;
-        border-top: 5px solid  rgb(61, 90, 253);
-        background: #212042dc;
-        color: #b8b8bb;
-        }
-
-        .division{
-        float: none;
-        position: relative;
-        margin: 30px auto 20px;
-        text-align: center;
-        width: 100%;
-        box-sizing: border-box;
-        }
-
-        .division .line{
-        border-top: 1.5px solid #57557A;;
-        position: absolute;
-        top: 13px;
-        width: 85%;
-        }
-
-        /* Posição da linha esquerda */
-        .line.l{
-        left: 20px;
-        }
-
-        /* Posição da linha direita */
-        .line.r{
-	    right: 20px;
-        }
-
-        .division span{
-        font-weight: 600;
-        font-size: 14px;
-        }
-
-        .myform-input{
-        padding: 0 25px 0 33px;
-        }
-
-        .form-control{
-        /*border: 1px solid #57557A;
-        border-radius: 3px;
-        background: #212042;
-        margin-bottom: 20px;
-        letter-spacing: 1px;*/
-
-        border: none;
-        border-bottom: 1px solid #e9e2e2;
-        outline: none;
-        color: #fff;
-        background: #4241637c;
-        font-size: 16px;
-        padding-left: 20px;
-        margin-bottom: 20px;
-        letter-spacing: 1px;
-        }
-
-        .form-control:focus{
-        border: 1px solid #486f7e;
-        border-radius: 3px;
-        box-shadow: none;
-        background: #424163d8;
-        color: #fff;
-        letter-spacing: 1px;
-        }
-
-        .bn{
-        text-align: left;
-        font-size: 14px;
-        }
-
-        .link-cad {
-        text-align: right;
-        font-size: 14px;
-        }
-
-        .btn-primary{
-        background: linear-gradient(135deg, rgb(10, 4, 41) 39%,rgb(32, 35, 219) 101%);
-        border: none;
-        border-radius: 50px;
-        }
-
-        .btn-primary:focus{
-        box-shadow: none;
-        border: none;
-        }
-
-        .btn-primary:hover{
-        color: #000000;
-        }
-
-        .far.fa-user{
-        font-size: 13px;
-        }
-
-        /* For mobile phones: */
-        @media (max-width: 767px) {
-        .foot{display: flex; flex-direction: column;}
-        .foot .link-cad {text-align: left;}
-        }
-
-        @media(max-width: 450px){
-        .foot{display: flex; flex-direction: column;}
-        .foot .col-md-6{text-align: center; width: auto; align-items: center; margin-top: auto;}
-        }
-        
-        @media (max-width: 768px) {
-
-            body {
-                background-size: auto 100%; /* Ajusta a imagem para caber na altura em telas menores */
-                background-position: top center; /* Foca no topo da imagem em telas pequenas */
-            }
-        }
-
-        /* For Desktop */
-        @media (min-width: 1000px) {
-
-        body {
-            background-size: cover; /* Garante que cubra a tela inteira em desktops grandes */
-        }
-
-        .custom-card {
-            max-width: 700px; /* Ajuste conforme necessário */
-        }
-
-        }
-        
-    </style>
+    <!-- Style CSS-->
+    <link rel="stylesheet" href="styleTelaLogin.css">
 
 </head>
 
@@ -231,13 +75,12 @@
     </div>
 
     
-    <!-- JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpERiuV7/v9WQDS6TafUPD2JY0/1UczdKC1ENe2twbOflpiZK+scu0eeg5ME" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     
-    <script src="./scriptTelaLogin.js">
-    </script>
+    <!-- JavaScript -->
+    <script src="./scriptTelaLogin.js" async></script>
 </body>
 </html>

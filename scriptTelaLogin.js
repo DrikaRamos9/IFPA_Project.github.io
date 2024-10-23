@@ -44,7 +44,7 @@ function entrar () {
         //alert("Usuário não cadastrado")
     //}
 
-    // Verificação de usuário e senha iguais ou não
+    // Verificação de usuário, se as senha são iguais ou não
     if(inputuser.value == userValid.user && inputsenha.value == userValid.senha){
         //alert('Deu certo!!')
 
