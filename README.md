@@ -18,10 +18,14 @@ Este projeto é uma aplicação web para gestão. Ele permite aos usuários (alu
 2. Descrição do arquivo "index.html":
    1. Arquivo HTML principal que contém a tela de login utilizando de algumas bibliotecas, também contém a seção do estilo (CSS).
    
-3. Descrição do arquivo "scriptTelaLogin.js":
-   1. Arquivo JavaScript com a lógica de programação utilizando o WebStorage do navegador para armazenar as informações, apenas para teste.
+3. Descrição do arquivo "TelaCadastro.html":
+   1. Arquivo HTML da página com o formulário para que o aluno possa realizar seu cadastro no sistema.
 
-4. Pasta IMG contém as imagens utilizadas no projeto.
+4. Pasta "IMG" contém as imagens utilizadas no projeto.
+
+5. Pasta "scripts" contém os arquivos em JavaScript utilizados no projeto.
+
+6. Pasta "styles" contém os arquivos CSS (estilo) utilizados no projeto.
 
 ### Acesse a página do projeto no GitHubPages clicando no link abaixo ou copiando a URL no navegador
 https://drikaramos9.github.io/IFPA_Project.github.io/
