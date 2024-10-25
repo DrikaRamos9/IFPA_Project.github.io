@@ -46,7 +46,7 @@ p {
     border-top: 1.5px solid #40de63;
     position: absolute;
     top: 13px;
-    width: 85%; /* estava em 85%, verificar se essa atual fica boa em celular*/
+    width: 90%; /* estava em 85%, verificar se essa atual fica boa em celular*/
 }
 
 /* Posição da linha esquerda */
