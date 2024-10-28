@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <!-- Tags Meta -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Consulta Página Inicial - Aluno</title>
+
+  <!-- Adicionando Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Google Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
+  <link href="https://fonts.googleapis.com/css2?family=Contrail+One&display=swap" rel="stylesheet">
+
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- API Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="./styles/styleTelaConsulta.css">
+
+</head>
+
+<body>
+
+    <!-- Seção da barra de navegação (Menu) -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">SiGAC IFPA</a>
+
+        <!-- Configuração do menu quando a tela for pequena "3 tracinhos" --->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Opções do Menu -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa fa-bell"></i>Notificações</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a onclick="Inicio()" class="nav-link" href="#"><i class="fa fa-home"></i>Início</a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="DadosPessoais()" class="nav-link" href="#"><i class="fa fa-id-card"></i>Dados Pessoais</a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="sair()" class="nav-link" href="#"><i class="fa fa-sign-out"></i>Sair</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Seção de parágrafo de texto -->
+    <div class="head-container-fluid">
+        <h3 id="logado"> </h3> <!-- Nome da pessoa logada -->
+        <p>Esta é a seção do seu dashboard com informações gerais sobre suas atividades complementares.</p>
+    </div>
+
+    <!-- Cards de Visualização de dados/informações -->
+    <div class="container card-container mt-4">
+        <div class="row">
+            
+            <div class="col-md-3">
+                <div class="card text-center" >
+                <div class="card-header">
+                    Progresso
+                </div>
+
+                <div class="card-body">
+                    <h3 class="card-title">90%</h3>
+                    <p class="card-text">Você está Regular no cumprimento das suas atividades complementares d curso.</p>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card text-center" >
+                <div class="card-header">
+                    Horas Validadas
+                </div>
+
+                <div class="card-body">
+                    <h3 class="card-title">294</h3>
+                    <p class="card-text">O seu curso exige um mínimo de 400 horas em atividades complementares para conclusão.</p>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card text-center" >
+                <div class="card-header">
+                    Horas Pendentes
+                </div>
+
+                <div class="card-body">
+                    <h3 class="card-title">26</h3>
+                    <p class="card-text">Para concluir o seu curso em 2024 você precisa, aproximadamente, de 26 horas em atividades complementares.</p>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card text-center" >
+                <div class="card-header">
+                    Horas em Análise
+                </div>
+
+                <div class="card-body">
+                    <h3 class="card-title">56</h3>
+                    <p class="card-text">Você tem 1 atividade aguardando análise.</p>
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Barra de Pesquisa -->
+    <form class="search-box d-flex">
+        <input class="form-control me-2" type="text" placeholder="Search">
+        <button class="btn btn-primary" type="button">Pesquisar</button>
+    </form>
+
+    <!-- Seção da Tabela -->
+    <div id="table-container" class="container mt-3">
+
+        <!--Título tabela e botão de nova atividade-->
+        <div class="table-title">
+            <h5><b>Atividades Registradas</b></h5>
+            <button onclick="openModal()" type="button" class="btn add-new" id="bt-incluir"><i class="fa fa-plus"></i> Registrar nova atividade</button>
+        </div>
+    
+        <!-- Tabela -->
+        <div class="table-responsive">
+    
+            <table class="table table-hover">
+                <!-- Identificação Das Colunas da Tabela -->
+                <thead class="head-table">
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Título</th>
+                        <th>Carga Horária</th>
+                        <th>Data de Realização</th>
+                        <th id="Status">Status</th>
+                        <th class="acao">Editar</th>
+                        <th class="acao">Excluir</th>
+                    </tr>
+                </thead>
+                <!-- Dados por linha (TR) e coluna (TD) -->
+                <tbody>
+    
+                </tbody>
+            </table>
+        </div>
+    
+    </div>
+
+    <!-- Trigger Modal -->
+    <div class="modal-container">
+        <div class="modal" id="myModal">
+
+            <!-- Formulário -->
+            <form class="form-cad">
+
+                <label for="LabelCategoria">Categoria</label>
+                <select id="Categoria" class="form-control">
+                    <option value="" selected>Escolher categoria</option>
+                    <option value="Estágio">Estágio</option>
+                    <option value="Curso">Curso</option>
+                    <option value="Seminário">Seminário</option>
+                    <option value="Monitoria">Monitoria</option>
+                </select>
+                    
+                <label for="LabelTitulo">Título</label>
+                <input type="text" class="form-control" id="Titulo" required>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="LabelCargaH">Carga Horária</label>
+                        <input type="text" class="form-control" id="CargaH" required>
+                    </div>
+                    <div class="col">
+                        <label for="LabelDataR">Data de Realização</label>
+                        <input type="date" class="form-control" id="DataR" required>
+                    </div>
+                </div>
+
+                <label for="LabelFile">Fazer Upload do Certificado*</label>
+                <input type="file" class="form-control-file" id="File" required>
+
+                <button type="submit" id="btn-salvar" class="btn btn-primary mb-2 btn-block">Cadastrar Atividade</button>
+            </form>    
+            <!-- Final do Card do Formulário -->
+                
+        </div>
+    </div>    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="./scripts/scriptTelaConsulta.js"></script>
+</body>
+</html>

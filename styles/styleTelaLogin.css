@@ -24,7 +24,7 @@ p {
 
 .card {
     border: none;
-    border-top: 5px solid  #40de63; 
+    border-top: 5px solid  #414e79; 
     background: #ffffff;
     color: #141414;
     box-shadow: 0px 0px 155px 0px rgba(82, 63, 105, 0.39);
@@ -43,7 +43,7 @@ p {
 }
 
 .division .line {
-    border-top: 1.5px solid #40de63;
+    border-top: 1.5px solid #414e79;
     position: absolute;
     top: 13px;
     width: 90%; /* estava em 85%, verificar se essa atual fica boa em celular*/
@@ -105,8 +105,8 @@ p {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, rgb(11, 177, 47) 39%,rgb(123, 207, 123) 101%);
-    color: #121313;
+    background: linear-gradient(135deg, rgb(10, 4, 41) 39%, rgb(32, 35, 219) 100%);
+    color: white;
     border: none;
     border-radius: 50px;
 }
@@ -117,8 +117,8 @@ p {
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg,#40de63 39%,rgb(10, 114, 15) 101%);
-    color: #121313;
+    background: linear-gradient(135deg, rgb(32, 35, 219) 39%,rgb(10, 4, 41) 100%);
+    color: white;
 }
 
 .far.fa-user {

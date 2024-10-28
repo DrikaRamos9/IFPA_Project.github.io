@@ -16,7 +16,7 @@ body {
 }
 
 h3{
-    color: #40de63;
+    color: black;
 }
 
 /* Form e Inputs */
@@ -67,8 +67,8 @@ select:focus {
     font-weight: 400;
     height: 43px;
     cursor: pointer;
-    background: linear-gradient(135deg,#40de63 39%,rgb(10, 114, 15) 101%);
-    color: #121313;
+    background: linear-gradient(135deg, rgb(10, 4, 41) 39%, rgb(32, 35, 219) 100%);
+    color: white;
 }
 
 .btn-primary:focus {
@@ -77,14 +77,14 @@ select:focus {
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, rgb(11, 177, 47) 39%,rgba(123, 207, 123, 0.788) 101%);
-    color: #121313;
+    background: linear-gradient(135deg, rgb(32, 35, 219) 39%,rgb(10, 4, 41) 100%);
+    color: white;
 }
 
 /* Icone Usuário */
 .form-icon{
 	text-align: center;
-    background-color: #40de63;
+    background-color: #414E79;
     border-radius: 50%;
     font-size: 40px;
     color: white;
