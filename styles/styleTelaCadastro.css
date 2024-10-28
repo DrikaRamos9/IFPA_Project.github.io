@@ -1,6 +1,6 @@
 body {
     overflow-x: hidden;
-    background-color: #19123B;
+    background-color: #f5f5f5;
 }
 
 .container-fluid{
@@ -9,11 +9,14 @@ body {
 
 /* Card */
 .card {
-    background: #212042d2;
-    color: #b8b8bb;
+    background: #ffffff;
     padding: 30px 40px;
     border: none !important;
     box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);  
+}
+
+h3{
+    color: #40de63;
 }
 
 /* Form e Inputs */
@@ -27,20 +30,22 @@ button {
     padding: 8px 15px;
     border-radius: 5px !important;
     margin: 7px 0px;
-    box-sizing: border-box;
-    border: 1px solid #4e4c74;
+    border: none;
     font-size: 18px !important;
     font-weight: 300;
 }
 
 input{
-    background: #38374dd8;
+    background: #dfe1e4d0;
+    color:#141414;
+    border-bottom: 1px solid #4945457e;
 }
 
 .form-select{
-    background-color: #38374dd8; /* A seta aparece apenas com fundo claro*/
-    color: #b8b8bb;
-    border: 1px solid #4e4c74;
+    background-color: #dfe1e4d0; /* A seta aparece apenas com fundo claro*/
+    color:#141414c9;
+    border: none;
+    border-bottom: 1px solid #4945457e;
 }
 
 input:focus,
@@ -48,38 +53,38 @@ select:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    border: 1px solid #486f7e;
-    background: #36335fd8;
+    border: 0.3px solid #289eec9d;
+    background: #8382ad7e;
     outline-width: 0;
     font-weight: 400;
 }
 
 /* Botão Cadastrar */
-.btn-block {
+.btn-primary {
+    border: none;
     text-transform: uppercase;
     font-size: 15px !important;
     font-weight: 400;
     height: 43px;
     cursor: pointer;
-    color: #fff;
-    background: linear-gradient(135deg, rgb(10, 4, 41) 39%,rgb(32, 35, 219) 101%);
+    background: linear-gradient(135deg,#40de63 39%,rgb(10, 114, 15) 101%);
+    color: #121313;
 }
 
-.btn-block:hover {
-    color: #031a83;
+.btn-primary:focus {
+    box-shadow: none;
+    border: none;
 }
 
-button:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    outline-width: 0
+.btn-primary:hover {
+    background: linear-gradient(135deg, rgb(11, 177, 47) 39%,rgba(123, 207, 123, 0.788) 101%);
+    color: #121313;
 }
 
 /* Icone Usuário */
 .form-icon{
 	text-align: center;
-    background-color: rgb(10, 4, 41);
+    background-color: #40de63;
     border-radius: 50%;
     font-size: 40px;
     color: white;

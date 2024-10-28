@@ -106,6 +106,7 @@ p {
 
 .btn-primary {
     background: linear-gradient(135deg, rgb(11, 177, 47) 39%,rgb(123, 207, 123) 101%);
+    color: #121313;
     border: none;
     border-radius: 50px;
 }
@@ -116,7 +117,7 @@ p {
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, rgb(11, 177, 47) 39%,rgba(123, 207, 123, 0.788) 101%);
+    background: linear-gradient(135deg,#40de63 39%,rgb(10, 114, 15) 101%);
     color: #121313;
 }
 

@@ -23,7 +23,7 @@ fname.addEventListener('keyup', () => {
         labelfname.innerHTML = 'Primeiro Nome - Insira no mínimo 3 letras'
         validfname = false
     } else {
-        labelfname.setAttribute('style', 'color: #b8b8bb')
+        labelfname.setAttribute('style', 'color: blue')
         labelfname.innerHTML = 'Primeiro Nome *'
         validfname = true
     }
@@ -36,7 +36,7 @@ matricula.addEventListener('keyup', () => {
         labelmatricula.innerHTML = 'Matrícula - Insira no mínimo 11 caracteres'
         validmatricula = false
     } else {
-        labelmatricula.setAttribute('style', 'color: #b8b8bb')
+        labelmatricula.setAttribute('style', 'color: blue')
         labelmatricula.innerHTML = 'Matrícula *'
         validmatricula = true
     }
@@ -49,7 +49,7 @@ password.addEventListener('keyup', () => {
         labelpassword.innerHTML = 'Crie sua senha - Insira no mínimo 6 caracteres'
         validpassword = false
     } else {
-        labelpassword.setAttribute('style', 'color: #b8b8bb')
+        labelpassword.setAttribute('style', 'color: blue')
         labelpassword.innerHTML = 'Crie sua senha *'
         validpassword = true
     }
@@ -62,10 +62,11 @@ function showToast(toastId) {
     toast.show();
 }
 
+// Previne o comportamento padrão do formulário
+event.preventDefault()
 // Função de Cadastrar usuário
 function cadastrar(){
-    // Previne o comportamento padrão do formulário
-    event.preventDefault()
+
 
     if(validfname && validmatricula && validpassword){
         let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]') //criando um vetor para armazenar os dados do cadastro - localStorage do navegador
