@@ -62,15 +62,24 @@ function showToast(toastId) {
     toast.show();
 }
 
-// Previne o comportamento padrão do formulário
-event.preventDefault()
+
+
 // Função de Cadastrar usuário
 function cadastrar(){
-
 
     if(validfname && validmatricula && validpassword){
         let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]') //criando um vetor para armazenar os dados do cadastro - localStorage do navegador
         
+        // Verifica se já existe um usuário com a mesma matrícula
+        let usuarioExistente = listaUser.some(user => user.matriculaCad === matricula.value);
+        if (usuarioExistente) {
+            // Previne o comportamento padrão do formulário
+            event.preventDefault()
+            showToast('existToast');
+            return; // Interrompe o cadastro se o usuário já existe
+        }
+
+        // Adiciona o novo usuário à lista
         listaUser.push(
             {
                 fnameCad: fname.value,
@@ -82,18 +91,19 @@ function cadastrar(){
 
         localStorage.setItem('listaUser', JSON.stringify(listaUser)) //salvado o vetor no localStorage
         
+        //alert("Sucesso")
+        // Previne o comportamento padrão do formulário
+        event.preventDefault()
         // Alert de sucesso no cadastro
-        //alert('Cadastrado com sucesso!')
         showToast('successToast');
 
         // Função para dar um delay antes de ir pra tela de login
         setTimeout(function() { 
-            window.location.href = './TelaLogin.html'
+            window.location.href = './index.html'
         }, 3000);
         
     }else {
         // Alert de falha no cadastro
-        //alert('Erro ao cadastrar. Verifique se todos os campos foram preenchidos.')
         showToast('errorToast');
     }
 
