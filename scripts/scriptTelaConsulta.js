@@ -95,6 +95,18 @@ btnSalvar.onclick = e => {
     id = undefined
 }
 
+// Função para calcular o total da carga horária cadastrada
+function calculaTotalCargaHoraria() {
+    const totalCargaH = itens.reduce((total, item) => total + parseFloat(item.CargaH || 0), 0)
+    document.querySelector('#total-cargaH').textContent = `${totalCargaH} h`
+}
+
+// Função para calcular o número de atividades registradas
+function calculaTotalAtividades() {
+    const totalAtividades = itens.length
+    document.querySelector('#total-atividades').textContent = `Você tem ${totalAtividades} atividade(s) aguardando análise.`
+}
+
 // Função de carregar os dados
 function loadItens() {
     itens = getItensBD()
@@ -102,7 +114,9 @@ function loadItens() {
     itens.forEach((item, index) => {
         insertItem(item, index)
     })
-    
+
+    calculaTotalCargaHoraria() // Atualiza o total da carga horária
+    calculaTotalAtividades() // Atualiza o total de atividades registradas na tabela
 }
 
 // Cria um BD no webstorage com os dados da tabela
@@ -116,23 +130,23 @@ loadItens()
 let userLogado = JSON.parse(localStorage.getItem('userLogado'))
 let logado = document.querySelector('#logado')
 
-/*if(localStorage.getItem('token') === null) {
+if(localStorage.getItem('token') === null) {
     alert('Você não está logado.')
 
      // Função para dar um delay antes de ir pra tela de login
     setTimeout(function() { 
-        window.location.href = './TelaLogin.html'
+        window.location.href = './index.html'
     }, 2000);
 }
 
 // desativa essa linha caso queira editar... ela ativa faz com que o acesso à página não ocorra sem login
-logado.innerHTML = `Bem-vindo ${userLogado.nome} ${userLogado.sobrenome}`*/
+logado.innerHTML = `Bem-vindo ${userLogado.nome} ${userLogado.sobrenome}`
 
 // Funções do NavBar
 function sair(){
     localStorage.removeItem('token')
     localStorage.removeItem('userLogado')
-    window.location.href = './TelaLogin.html'
+    window.location.href = './index.html'
 }
 
 function DadosPessoais(){

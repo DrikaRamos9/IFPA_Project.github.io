@@ -1,169 +1,166 @@
-    /* NavBar - Menu de navegação */
-    .navbar{
-        background-color: #414e79;
-    }
+/* NavBar - Menu de navegação */
+.navbar{
+    background-color: #414e79;
+}
 
-    .navbar .navbar-brand{ /* Logo no canto esquerdo da navbar */
-        color: aliceblue;
-        font-family: "Contrail One", sans-serif;
-    }
+.navbar .navbar-brand{ /* Logo no canto esquerdo da navbar */
+    color: white;
+    font-family: "Contrail One", sans-serif;
+}
     
-    .navbar .nav-item i { /* Tamanho e cor dos icones da navbar */
-        font-size: 20px;
-        color: aliceblue;
-        margin-right: 5px;
-    }
+.navbar .nav-item i { /* Tamanho e cor dos icones da navbar */
+    font-size: 20px;
+    color: white;
+    margin-right: 5px;
+}
 
-    /* Tamanho e cor do texto dos itens da navbar 
-    .navbar-nav .nav-link {
-        color: aliceblue;
-    }
-    /* Cor ao passar o mouse 
-    .navbar-nav .nav-link:hover {
-      color: rgb(91, 91, 124); 
-    } 
-    */
+.nav-link {
+    color: red;
+}
 
-    /* Texto de bem-vindo */
-    .head-container-fluid {
-        margin-top: 90px;
-        margin-left: 15px;
-        margin-right: 15px;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
+/* Texto de bem-vindo */
+.head-container-fluid {
+    margin-top: 90px;
+    margin-left: 15px;
+    margin-right: 15px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
-    /* Cards */
-    .card-container{
-        margin-top: 30px;
-    }
+/* Cards */
+.card-container{
+    margin-top: 30px;
+}
 
-    .col-md-3 {
-        margin-bottom: 1em;
-    }
+.col-md-3 {
+    margin-bottom: 1em;
+}
 
-    .card {
-        height: 100%;
-    }
+.card {
+    height: 100%;
+    border: none;
+    box-shadow: 0px 0px 2px 0px rgba(13, 12, 14, 0.329);
+}
 
-    .card-header {
-        background-color: #414e79;
-        color: aliceblue;
-    }
+.card-header {
+    background-color: #414e79;
+    color: white;
+}
 
-    .card-body {
-        background-color: #E2E2E2;
-    }
+.card-body {
+    background-color: rgba(196, 197, 206, 0.151);
+    border-radius: 5px;
+}
 
-    /* Adiciona um pequeno espaço na margem esquerda entre a caixa de pesquisa e os outros elementos */
-    .search-box { 
-        margin-left: 15px;
-        margin-top: 20px;
-        margin-bottom: 15px;
-    }
+/* Adiciona um pequeno espaço na margem esquerda entre a caixa de pesquisa e os outros elementos */
+.search-box { 
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
 
-    .search-box input {
-        padding-right: 35px;
-        min-height: 38px;
-        width: 300px;
-        border: none;
-        background: #e8e5eb;
-        border-radius: 3px !important;
-    }
+.search-box input {
+    padding-right: 35px;
+    min-height: 38px;
+    width: 300px;
+    border: none;
+    background: #e8e5eb;
+    border-radius: 3px !important;
+}
 
-    .search-box input:focus {		
-        background: #fff;
-        box-shadow: none;
-    }
+.search-box input:focus {		
+    background: #ffffff;
+    box-shadow: none;
+}
 
-    /*Tabela*/
-    .table-responsive {
+/*Tabela*/
+.table-responsive {
     border-radius: 10px;
     background-color: rgba(196, 197, 206, 0.226);
     margin-bottom: 10px;
-    }
+}
 
-    .row::after {
+.row::after {
     content: "";
     clear: both;
     display: block;
-    }
+}
 
-    .table-title {
+.table-title {
     min-height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: auto auto;
-    }
+}
 
-    thead {
+thead {
     background-color: #414e79;
-    color: aliceblue;
-    }
+    color: white;
+}
 
-    thead tr th {
+thead tr th {
     text-align: center;
-    }
+}
 
-    tbody tr td {
+tbody tr td {
     text-align: center;
-    }
+}
 
-    .table-title h5 {
+.table-title h5 {
     word-break: break-all;
-    }
+}
 
-    #bt-incluir {
+#bt-incluir {
     padding: 8px;
     border-radius: 5px;
     border: none;
     color: white;
-    background-color: #00BF63;
-    }
+    background-color: #00bf63;
+}
 
-    #bt-incluir:hover { /* Muda a cor do botão quando o mouse passa por cima */
-    background-color: #11582fdc;
-    }
+#bt-incluir:hover { /* Muda a cor do botão quando o mouse passa por cima */
+    background-color: #417950;
+}
 
-    .modal {
-        display: flex;
-        align-items: center;
-        padding: 40px;
-        background-color: white;
-        border-radius: 10px;
-        width: auto;
-        height: auto;
-        margin-top: 80px;
-        margin-left: 30px;
-        margin-right: 10px;  
-    }
+.modal {
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    background-color: white;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    margin-top: 80px;
+    margin-left: 30px;
+    margin-right: 10px;  
+}
 
-    .modal input{
-      background-color: #c7c2c22d;
-      padding: 5px 10px;
-      margin-bottom: 20px;
-    }
+.modal input{
+    background-color: #c7c2c22d;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+}
 
-    .modal select{
-        background-color: #c7c2c22d;
-        padding: 5px 10px;
-        margin-bottom: 20px;
-    }
+.modal select{
+    background-color: #c7c2c22d;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+}
 
-    .form-control-file {
-        border-radius: 5px;
-    }
+.form-control-file {
+    border-radius: 5px;
+}
 
-    #btn-modal {
-      border-radius: 100px;
-      background-color: #2878E4;
-      color: white;
-      margin-top: 20px;
-    }
+#btn-modal {
+    border-radius: 100px;
+    background-color: #2878E4;
+    color: white;
+    margin-top: 20px;
+}
 
-    .modal-container {
+.modal-container {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -174,17 +171,17 @@
     z-index: 999;
     align-items: center;
     justify-content: center;
-    }
+}
 
-    .active {
+.active {
     display: flex;
-    }
+}
 
-    .active .modal {
+.active .modal {
     animation: modal .4s;
-    }
+}
 
-    @keyframes modal {
+@keyframes modal {
     from {
         opacity: 0;
         transform: translate3d(0, -60px, 0);
@@ -193,14 +190,14 @@
         opacity: 1;
         transform: translate3d(0, 0, 0);
     }
-    }
+}
 
-    td button {
-        border: none;
-        outline: none;
-        background: transparent;
-    }
+td button {
+    border: none;
+    outline: none;
+    background: transparent;
+}
       
-    td button i {
-        font-size: 25px;
-    }
+td button i {
+    font-size: 25px;
+}
