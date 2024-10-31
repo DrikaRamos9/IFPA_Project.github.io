@@ -1,10 +1,8 @@
 // Função para efetuar o login
-function entrar () {
+function entrar() {
     // Declarado variáveis do input
     let inputuser = document.querySelector('#inputuser')
     let inputsenha = document.querySelector('#inputsenha')
-
-    // Variável do modal de mensagem de erro
 
     // Lista de usuários salvos no localstorage
     listaUser = []
@@ -40,10 +38,6 @@ function entrar () {
     // Previne o comportamento padrão do formulário
     event.preventDefault()
 
-    //if(inputuser.value != userValid.user && inputsenha.value != userValid.senha ){
-        //alert("Usuário não cadastrado")
-    //}
-
     // Verificação de usuário, se as senha são iguais ou não
     if(inputuser.value == userValid.user && inputsenha.value == userValid.senha){
         //alert('Deu certo!!')
@@ -59,7 +53,7 @@ function entrar () {
 
     } else {
         // Alert de falha no login
-        alert('Usuário ou senha incorretos!')
+        alert('Usuário ou senha incorretos! Se você não possui uma conta, cadastre-se.')
     }
 
 }

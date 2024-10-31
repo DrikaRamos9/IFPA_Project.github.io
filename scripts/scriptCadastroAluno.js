@@ -1,20 +1,25 @@
-//Declaração de variáveis
-let fname = document.querySelector('#fname')
+// Declaração de variáveis
+let fname = document.querySelector('#fname'); // id
 let labelfname = document.querySelector('#labelfname')
-let validfname = false // significa que os campos não estão preenchidos
 
-let lname = document.querySelector('#lname')
+let lname = document.querySelector('#lname');
 let labellname = document.querySelector('#labellname')
-let validlname = false // significa que os campos não estão preenchidos
 
-let matricula = document.querySelector('#matricula')
+let matricula = document.querySelector('#matricula');
 let labelmatricula = document.querySelector('#labelmatricula')
-let validmatricula = false
 
-let password = document.querySelector('#password')
+let password = document.querySelector('#password');
 let labelpassword = document.querySelector('#labelpassword')
-let validpassword = false
 
+let email = document.querySelector('#email');
+let phone = document.querySelector('#phone');
+let curso = document.querySelector('#curso');
+
+// Variáveis para as Validações
+let validfname = false; // significa que os campos não estão preenchidos
+let validlname = false;
+let validmatricula = false;
+let validpassword = false;
 
 // Validação do campo nome - se as letras digitadas forem menores que 3 muda a cor da label
 fname.addEventListener('keyup', () => {
@@ -62,19 +67,17 @@ function showToast(toastId) {
     toast.show();
 }
 
-
-
 // Função de Cadastrar usuário
 function cadastrar(){
 
     if(validfname && validmatricula && validpassword){
+        
         let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]') //criando um vetor para armazenar os dados do cadastro - localStorage do navegador
         
         // Verifica se já existe um usuário com a mesma matrícula
         let usuarioExistente = listaUser.some(user => user.matriculaCad === matricula.value);
         if (usuarioExistente) {
-            // Previne o comportamento padrão do formulário
-            event.preventDefault()
+            event.preventDefault() // Previne o comportamento padrão do formulário
             showToast('existToast');
             return; // Interrompe o cadastro se o usuário já existe
         }
@@ -83,16 +86,17 @@ function cadastrar(){
         listaUser.push(
             {
                 fnameCad: fname.value,
+                lnameCad: lname.value,
                 matriculaCad: matricula.value,
                 passwordCad: password.value,
-                lnameCad: lname.value
+                emailCad: email.value,
+                phoneCad: phone.value,
+                cursoCad: curso.value
             }
         )
 
         localStorage.setItem('listaUser', JSON.stringify(listaUser)) //salvado o vetor no localStorage
         
-        //alert("Sucesso")
-        // Previne o comportamento padrão do formulário
         event.preventDefault()
         // Alert de sucesso no cadastro
         showToast('successToast');
