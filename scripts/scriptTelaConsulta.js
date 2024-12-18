@@ -107,6 +107,30 @@ function calculaTotalAtividades() {
     document.querySelector('#total-atividades').textContent = `Você tem ${totalAtividades} atividade(s) aguardando análise.`
 }
 
+// Pega os dados de usuário armazenados no webStorage
+let userLogado = JSON.parse(localStorage.getItem('userLogado'))
+let logado = document.querySelector('#logado')
+
+// Usa a matrícula do aluno como identificador único
+const alunoId = userLogado.user;
+
+// Condição para o usuário não logado não ter acesso a página
+// desativa essa linha caso queira editar... ela ativa faz com que o acesso à página não ocorra sem login
+if (localStorage.getItem('token') === null) {
+    alert('Você não está logado.');
+
+    // Função para dar um delay antes de ir pra tela de login
+    setTimeout(() => { 
+        window.location.href = './index.html';
+    }, 2000);
+} else {
+    logado.innerHTML = `Bem-vindo ${userLogado.nome} ${userLogado.sobrenome}`; // Exibe o nome do usuário na página
+}
+
+// Cria um BD no webstorage com os dados da tabela
+const getItensBD = () => JSON.parse(localStorage.getItem(`dbAtividades_${alunoId}`)) ?? [];
+const setItensBD = () => localStorage.setItem(`dbAtividades_${alunoId}`, JSON.stringify(itens));
+
 // Função de carregar os dados
 function loadItens() {
     itens = getItensBD()
@@ -119,28 +143,8 @@ function loadItens() {
     calculaTotalAtividades() // Atualiza o total de atividades registradas na tabela
 }
 
-// Cria um BD no webstorage com os dados da tabela
-const getItensBD = () => JSON.parse(localStorage.getItem('dbAtividadesII')) ?? []
-const setItensBD = () => localStorage.setItem('dbAtividadesII', JSON.stringify(itens))
-
 // Carrega dados
 loadItens()
-
-// Pega os dados de usuário armazenados no webStorage
-let userLogado = JSON.parse(localStorage.getItem('userLogado'))
-let logado = document.querySelector('#logado')
-
-if(localStorage.getItem('token') === null) {
-    alert('Você não está logado.')
-
-     // Função para dar um delay antes de ir pra tela de login
-    setTimeout(function() { 
-        window.location.href = './index.html'
-    }, 2000);
-}
-
-// desativa essa linha caso queira editar... ela ativa faz com que o acesso à página não ocorra sem login
-logado.innerHTML = `Bem-vindo ${userLogado.nome} ${userLogado.sobrenome}`
 
 // Funções do NavBar
 function sair(){
@@ -150,7 +154,7 @@ function sair(){
 }
 
 function DadosPessoais(){
-    window.location.href = './TelaDadosPessoaisAluno.html'
+    window.location.href = './TelaDadosAluno.html'
 }
 
 function Inicio(){

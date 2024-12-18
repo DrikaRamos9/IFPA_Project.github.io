@@ -1,0 +1,62 @@
+body {
+    overflow: hidden;
+    padding-top: 3rem; /* Adiciona espaçamento para evitar sobreposição do formulário com a navbar */
+}
+
+.navbar {
+    background-color: #414e79;
+}
+
+.navbar-brand {
+    color: white;
+    font-family: "Contrail One", sans-serif;
+}
+
+.navbar .nav-item i {
+    font-size: 17px;
+    color: white;
+    margin-right: 5px;
+}
+
+.navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgb(138, 138, 148);
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: rgba(196, 197, 206, 0.151);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    background: rgba(196, 197, 206, 0.151);
+    border: none; /* Remove as bordas padrão */
+    border-bottom: 1px solid #686a6b; /* Aplica apenas a borda inferior */
+    box-shadow: none; /* Remove qualquer sombra */
+}
+
+.form-control:focus {
+    outline: none; /* Remove o contorno quando o campo estiver em foco */
+    border-bottom-color: #0056b3; /* Altera a cor da borda inferior quando o campo estiver em foco */
+}
+
+.form-container h3 {
+    margin-bottom: 20px;
+}
+
+.btn-custom {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+}

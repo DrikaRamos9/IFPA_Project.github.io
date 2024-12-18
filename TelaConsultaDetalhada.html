@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <!-- Tags Meta -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Consulta Detalhada</title>
+
+  <!-- Adicionando Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Google Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
+  <link href="https://fonts.googleapis.com/css2?family=Contrail+One&display=swap" rel="stylesheet">
+</head>
+
+<style>
+  /* NavBar - Menu de Naveação */
+  .navbar{
+    background-color: #414e79;
+  }
+
+  .navbar .navbar-brand{ /* Logo no canto esquerdo da navbar */
+    color: white;
+    font-family: "Contrail One", sans-serif;
+  }
+    
+  .navbar .nav-item i { /* Tamanho e cor dos icones da navbar */
+    font-size: 20px;
+    color: white;
+    margin-right: 5px;
+  }
+
+  /* Cards de Dados dos Alunos */
+  .InfoAluno {
+    max-width: 80%;
+    margin: 20px auto;
+    margin-top: 70px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: rgba(196, 197, 206, 0.151);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .InfoAluno p {
+    margin: 10px 0;
+  }
+
+  /* Tabela */
+  .table-responsive {
+    border-radius: 10px;
+    background-color: rgba(196, 197, 206, 0.226);
+    margin-bottom: 10px;
+  }
+
+  .row::after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+
+  .table-title {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto auto;
+  }
+
+  thead {
+    background-color: #414e79;
+    color: white;
+  }
+
+  thead tr th {
+    text-align: center;
+  }
+
+  tbody tr td {
+    text-align: center;
+  }
+
+  .table-title h5 {
+    word-break: break-all;
+  }
+
+</style>
+
+<body>
+  <!-- Seção da barra de navegação (Menu) -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">SiGAC IFPA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Opções do Menu -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa fa-bell"></i>Notificações</a>
+          </li>
+          
+          <li class="nav-item">
+            <a onclick="Inicio()" class="nav-link" href="#"><i class="fa fa-home"></i>Início</a>
+          </li>
+
+          <li class="nav-item">
+            <a onclick="DadosPessoais()" class="nav-link" href="#"><i class="fa fa-id-card"></i>Dados Pessoais</a>
+          </li>
+                
+          <li class="nav-item">
+            <a onclick="sair()" class="nav-link" href="#"><i class="fa fa-sign-out"></i>Sair</a>
+          </li>
+
+        </ul>
+      </div>
+  </nav>
+	
+  <!-- Visualização de dados/informações do aluno-->
+  <div class="InfoAluno">
+    <p><strong>Discente:</strong> <span id="nome"></span></p>
+    <p><strong>Matrícula:</strong> <span id="matricula"></span></p>
+    <p><strong>Curso:</strong> <span id="curso"></span></p>
+    <p><strong>Semestre:</strong> <span id="semestre"></span> <strong>Turma:</strong> <span id="turma"></span></p>
+  </div> 
+
+  <!-- Tabela -->
+  <div id="table-container" class="container mt-3">
+
+    <!--Título tabela-->
+    <div class="table-title">
+      <h5><b>Lista de Atividades do Aluno</b></h5>
+    </div>
+  
+    <!-- Tabela -->
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <!-- Identificação Das Colunas da Tabela -->
+        <thead class="head-table">
+          <tr>
+            <th>Título</th>
+            <th>Categoria</th>
+            <th>Carga Horária</th>
+            <th>Data de Realização</th>
+            <th class="acao">Avaliar</th>
+          </tr>
+        </thead>
+
+        <!-- Dados por linha (TR) e coluna (TD) -->
+        <tbody id="atividades-table-body">
+  
+        </tbody>
+      </table>
+    </div>
+  
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Funções do NavBar
+    function sair(){
+        localStorage.removeItem('token')
+        localStorage.removeItem('userLogado')
+        window.location.href = './TelaLogin.html'
+    }
+
+    function DadosPessoais(){
+        window.location.href = './TelaDadosPessoais - Coordenador.html'
+    }
+
+    function Inicio(){
+        window.location.href = './TelaConsulta - Coordenador.html'
+    }
+
+    // Função de exibição dos dados do aluno
+    document.addEventListener("DOMContentLoaded", function() {
+      // Obtém o parâmetro 'index' da URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const index = urlParams.get("index");
+
+      // Busca a lista de usuários do localStorage
+      const listaUser = JSON.parse(localStorage.getItem("listaUser")) || [];
+
+      // Recupera o usuário pelo índice e exibe as informações
+      const usuario = listaUser[index];
+      if (usuario) {
+        document.getElementById("nome").textContent = `${usuario.fnameCad} ${usuario.lnameCad}`;
+        document.getElementById("matricula").textContent = usuario.matriculaCad;
+        document.getElementById("curso").textContent = usuario.cursoCad;
+        document.getElementById("semestre").textContent = usuario.semestre || "N/A"; // Defina como "N/A" se não houver dados
+        document.getElementById("turma").textContent = usuario.turma || "N/A";
+
+        // Carregar atividades específicas do aluno
+        const atividades = JSON.parse(localStorage.getItem(`dbAtividades_${usuario.matriculaCad}`)) || [];
+        const atividadesTableBody = document.getElementById("atividades-table-body");
+
+        // Preencher a tabela com as atividades do aluno
+        atividades.forEach(atividade => {
+          const row = document.createElement("tr");
+        
+          // Colunas da atividade
+          row.innerHTML = `
+            <td>${atividade.Titulo}</td>
+            <td>${atividade.Categoria}</td>
+            <td>${atividade.CargaH}</td>
+            <td>${atividade.DataR}</td>
+            <td><button class="btn btn-primary">Avaliar</button></td>
+          `;
+          atividadesTableBody.appendChild(row);
+        });
+      }
+    });
+
+  </script>
+</body>
+</html>

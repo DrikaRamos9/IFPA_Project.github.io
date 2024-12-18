@@ -14,10 +14,6 @@
     margin-right: 5px;
 }
 
-.nav-link {
-    color: white;
-}
-
 /* Texto de bem-vindo */
 .head-container-fluid {
     margin-top: 90px;
@@ -112,73 +108,8 @@ tbody tr td {
     word-break: break-all;
 }
 
-#bt-incluir {
-    padding: 8px;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    background-color: #00bf63;
-}
-
-#bt-incluir:hover { /* Muda a cor do botão quando o mouse passa por cima */
-    background-color: #417950;
-}
-
-.modal {
-    display: flex;
-    align-items: center;
-    padding: 40px;
-    background-color: white;
-    border-radius: 10px;
-    width: auto;
-    height: auto;
-    margin-top: 80px;
-    margin-left: 30px;
-    margin-right: 10px;  
-}
-
-.modal input{
-    background-color: #c7c2c22d;
-    padding: 5px 10px;
-    margin-bottom: 20px;
-}
-
-.modal select{
-    background-color: #c7c2c22d;
-    padding: 5px 10px;
-    margin-bottom: 20px;
-}
-
 .form-control-file {
     border-radius: 5px;
-}
-
-#btn-modal {
-    border-radius: 100px;
-    background-color: #2878E4;
-    color: white;
-    margin-top: 20px;
-}
-
-.modal-container {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 999;
-    align-items: center;
-    justify-content: center;
-}
-
-.active {
-    display: flex;
-}
-
-.active .modal {
-    animation: modal .4s;
 }
 
 @keyframes modal {
