@@ -201,3 +201,13 @@ td button {
 td button i {
     font-size: 25px;
 }
+
+.toast {
+    display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.toast.show {
+    opacity: 1;
+}

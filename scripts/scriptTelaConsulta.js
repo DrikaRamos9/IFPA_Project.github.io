@@ -46,9 +46,19 @@ function editItem(index) {
 // Botão de deletar item
 function deleteItem(index) {
     itens.splice(index, 1)
+    //alert("Atividade excluída!")
     setItensBD()
     loadItens()
 }
+
+function formatarData(dataISO) {
+    // Dividir a string ISO (YYYY-MM-DD) em partes
+    const [ano, mes, dia] = dataISO.split('-');
+    
+    // Retornar no formato DD/MM/AAAA
+    return `${dia}/${mes}/${ano}`;
+}
+
 
 // Inserir os dados na tabela
 function insertItem(item, index) {
@@ -58,7 +68,7 @@ function insertItem(item, index) {
         <td>${item.Categoria}</td>
         <td>${item.Titulo}</td>
         <td>${item.CargaH} h</td>
-        <td>${item.DataR}</td>
+        <td>${formatarData(item.DataR)}</td>
         <td id="Status">${sStatus}</td>
         <td class="acao">
         <button onclick="editItem(${index})"><i class='bx bx-edit' ></i></button>
@@ -70,30 +80,69 @@ function insertItem(item, index) {
     tbody.appendChild(tr)
 }
 
-// Função de salvar dados
 btnSalvar.onclick = e => {
-
-    if (scategoria.value == '' || stitulo.value == '' || scargaH.value == '' || sDataR.value == '') {
-        return
-    }
-
     e.preventDefault();
 
-    if (id !== undefined) {
-        itens[id].Categoria = scategoria.value
-        itens[id].Titulo = stitulo.value
-        itens[id].CargaH = scargaH.value
-        itens[id].DataR = sDataR.value
-    } else {
-        itens.push({'Categoria': scategoria.value, 'Titulo': stitulo.value, 'CargaH': scargaH.value, 'DataR': sDataR.value})
+    // Validação dos campos obrigatórios
+    if (!scategoria.value || !stitulo.value || !scargaH.value || !sDataR.value) {
+        alert("Preencha todos os campos!")
+        return;
     }
 
-    setItensBD()
+    if (isNaN(scargaH.value)) {
+        alert("Carga horária inválida!");
+        return;
+    }
 
-    modal.classList.remove('active')
-    loadItens()
-    id = undefined
+    if (!isValidDate(sDataR.value)) {
+        alert("Data inválida!");
+        return;
+    }
+
+    try {
+        if (id !== undefined) {
+            // Atualizar item existente
+            itens[id] = {
+                'Categoria': scategoria.value,
+                'Titulo': stitulo.value,
+                'CargaH': scargaH.value,
+                'DataR': sDataR.value
+            };
+        } else {
+            // Adicionar novo item
+            itens.push({
+                'Categoria': scategoria.value,
+                'Titulo': stitulo.value,
+                'CargaH': scargaH.value,
+                'DataR': sDataR.value
+            });
+        }
+
+        // Exibir feedback de sucesso
+        alert("Atividade cadastrada com sucesso!");
+
+        // Persistência e atualização da UI
+        setItensBD();
+        modal.classList.remove('active');
+        loadItens();
+
+        // Reset do ID
+        id = undefined;
+    } catch (error) {
+        console.error("Erro ao salvar os dados:", error);
+        alert("Erro ao salvar os dados! Tente novamente.");
+    }
+};
+
+// Função de validação de data
+function isValidDate(dateString) {
+    const regex = /^\d{4}-\d{2}-\d{2}$/; // Formato esperado: YYYY-MM-DD
+    if (!regex.test(dateString)) return false;
+
+    const date = new Date(dateString);
+    return !isNaN(date.getTime());
 }
+
 
 // Função para calcular o total da carga horária cadastrada
 function calculaTotalCargaHoraria() {
