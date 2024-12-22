@@ -3,7 +3,7 @@ body {
     min-height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
-    overflow: hidden; /*evitar barras de rolagem*/
+    overflow: hidden; /* Evitar barras de rolagem */
     display: flex;
     align-items: center;
 }
@@ -22,19 +22,24 @@ p {
     font-size: 15px;
 }
 
+a {
+    font-size: 15px;
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+a:hover {
+    text-decoration: underline; /* Adiciona sublinhado apenas ao passar o mouse, opcional */
+}
+
 .card {
     border: none;
-    border-top: 5px solid  #414e79; 
+    border-top: 5px solid #414e79; 
     background: #ffffff;
     color: #141414;
     box-shadow: 0px 0px 15px 0px rgba(82, 63, 105, 0.39);
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.363);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-    -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
 }
 
 .division {
-    float: none;
     position: relative;
     margin: 30px auto 20px;
     text-align: center;
@@ -44,17 +49,16 @@ p {
 
 .division .line {
     border-top: 1.5px solid #414e79;
-    position: absolute;
+    /*position: absolute;*/
+    position: relative;
     top: 13px;
-    width: 90%; /* estava em 85%, verificar se essa atual fica boa em celular*/
+    width: 90%;
 }
 
-/* Posição da linha esquerda */
 .line.l {
     left: 20px;
 }
 
-/* Posição da linha direita */
 .line.r {
     right: 20px;
 }
@@ -65,24 +69,16 @@ p {
 }
 
 .myform-input {
-    padding: 0 25px 0 33px;
+    padding: 0 25px;
 }
 
 .form-control {
-    /*border: 1px solid #57557A;
-    border-radius: 3px;
-    background: #212042;
-    margin-bottom: 20px;
-    letter-spacing: 1px;*/
-
     border: none;
     border-bottom: 1px solid #4945457e;
-    outline: none;
     background: #dfe1e4d0;
     font-size: 16px;
     padding-left: 20px;
     margin-bottom: 20px;
-    letter-spacing: 1px;
 }
 
 .form-control:focus {
@@ -91,17 +87,6 @@ p {
     box-shadow: none;
     background: #8382ad7e;
     color: #000000;
-    letter-spacing: 1px;
-}
-
-.bn {
-    text-align: left;
-    font-size: 14px;
-}
-
-.link-cad {
-    text-align: right;
-    font-size: 14px;
 }
 
 .btn-primary {
@@ -117,7 +102,7 @@ p {
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, rgb(32, 35, 219) 39%,rgb(10, 4, 41) 100%);
+    background: linear-gradient(135deg, rgb(32, 35, 219) 39%, rgb(10, 4, 41) 100%);
     color: white;
 }
 
@@ -125,31 +110,24 @@ p {
     font-size: 13px;
 }
 
-/* For mobile phones: */
+/* Responsividade */
 @media (max-width: 767px) {
-    .foot{display: flex; flex-direction: column;}
-    .foot .link-cad {text-align: left;}
-}
-
-@media(max-width: 450px) {
-    .foot{display: flex; flex-direction: column;}
-    .foot .col-md-6{text-align: center; width: auto; align-items: center; margin-top: auto;}
-}
-    
-@media (max-width: 768px) {
-    body {
-        background-size: auto 100%; /* Ajusta a imagem para caber na altura em telas menores */
-        background-position: top center; /* Foca no topo da imagem em telas pequenas */
+    .foot {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
     }
 }
 
-/* For Desktop */
+@media (max-width: 450px) {
+    .foot .col-md-6 {
+        text-align: center;
+        margin-top: auto;
+    }
+}
+
 @media (min-width: 1000px) {
-    body {
-        background-size: cover; /* Garante que cubra a tela inteira em desktops grandes */
-    }
-
     .custom-card {
-        max-width: 700px; /* Ajuste conforme necessário */
+        max-width: 700px;
     }
 }
