@@ -8,7 +8,6 @@ body {
 }
 
 .navbar-brand {
-    color: white;
     font-family: "Contrail One", sans-serif;
 }
 
@@ -16,14 +15,6 @@ body {
     font-size: 17px;
     color: white;
     margin-right: 5px;
-}
-
-.navbar-nav .nav-link {
-    color: white;
-}
-
-.navbar-nav .nav-link:hover {
-    color: rgb(138, 138, 148);
 }
 
 .form-container {

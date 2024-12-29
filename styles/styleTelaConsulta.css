@@ -1,21 +1,16 @@
 /* NavBar - Menu de navegação */
-.navbar{
+.navbar {
     background-color: #414e79;
 }
 
-.navbar .navbar-brand{ /* Logo no canto esquerdo da navbar */
-    color: white;
+.navbar-brand { /* Logo no canto esquerdo da navbar */
     font-family: "Contrail One", sans-serif;
 }
-    
+
 .navbar .nav-item i { /* Tamanho e cor dos icones da navbar */
-    font-size: 20px;
+    font-size: 17px;
     color: white;
     margin-right: 5px;
-}
-
-.nav-link {
-    color: white;
 }
 
 /* Texto de bem-vindo */
@@ -131,7 +126,7 @@ tbody tr td {
     background-color: white;
     border-radius: 10px;
     width: auto;
-    height: auto;
+    height: 90%;
     margin-top: 80px;
     margin-left: 30px;
     margin-right: 10px;  
@@ -147,10 +142,6 @@ tbody tr td {
     background-color: #c7c2c22d;
     padding: 5px 10px;
     margin-bottom: 20px;
-}
-
-.form-control-file {
-    border-radius: 5px;
 }
 
 #btn-modal {

@@ -5,7 +5,8 @@ function entrar() {
     let inputsenha = document.querySelector('#inputsenha');
 
     // Lista de usuários salvos no localstorage
-    listaUser = [];
+    listaUser
+     = [];
 
     // Criando objeto para manipulação
     let userValid = {
@@ -17,15 +18,15 @@ function entrar() {
     };
 
     // Pega a lista de users do localstorage
-    listaUser = JSON.parse(localStorage.getItem('listaUser'));
+    listaUser = JSON.parse(localStorage.getItem('listaAluno'));
 
     listaUser.forEach((item) => {
-        if(inputuser.value == item.matriculaCad && inputsenha.value == item.passwordCad){
+        if(inputuser.value == item.matricula && inputsenha.value == item.password){
             userValid = {
                 nome: item.fnameCad,
                 sobrenome: item.lnameCad,
-                user: item.matriculaCad,
-                senha: item.passwordCad,
+                user: item.matricula,
+                senha: item.password,
                 perfil: item.perfil
             };
 

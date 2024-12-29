@@ -3,8 +3,8 @@ const tbody = document.querySelector('tbody')
 
 const scategoria = document.querySelector('#Categoria')
 const stitulo = document.querySelector('#Titulo')
-const scargaH = document.querySelector('#CargaH')
-const sDataR = document.querySelector('#DataR')
+const scargaH = document.querySelector('#cargaHoraria')
+const sDataR = document.querySelector('#dataRealizacao')
 const sStatus = 'teste Concluido'
 
 const btnSalvar = document.querySelector('#btn-salvar')
@@ -26,8 +26,8 @@ function openModal(edit = false, index = 0) {
     if (edit) {
         scategoria.value = itens[index].Categoria
         stitulo.value = itens[index].Titulo
-        scargaH.value = itens[index].CargaH
-        sDataR.value = itens[index].DataR
+        scargaH.value = itens[index].cargaHoraria
+        sDataR.value = itens[index].dataRealizacao
         id = index
     } else {
         scategoria.value = ''
@@ -67,8 +67,8 @@ function insertItem(item, index) {
     tr.innerHTML = `
         <td>${item.Categoria}</td>
         <td>${item.Titulo}</td>
-        <td>${item.CargaH} h</td>
-        <td>${formatarData(item.DataR)}</td>
+        <td>${item.cargaHoraria} h</td>
+        <td>${formatarData(item.dataRealizacao)}</td>
         <td id="Status">${sStatus}</td>
         <td class="acao">
         <button onclick="editItem(${index})"><i class='bx bx-edit' ></i></button>
@@ -105,16 +105,16 @@ btnSalvar.onclick = e => {
             itens[id] = {
                 'Categoria': scategoria.value,
                 'Titulo': stitulo.value,
-                'CargaH': scargaH.value,
-                'DataR': sDataR.value
+                'cargaHoraria': scargaH.value,
+                'dataRealizacao': sDataR.value
             };
         } else {
             // Adicionar novo item
             itens.push({
                 'Categoria': scategoria.value,
                 'Titulo': stitulo.value,
-                'CargaH': scargaH.value,
-                'DataR': sDataR.value
+                'cargaHoraria': scargaH.value,
+                'dataRealizacao': sDataR.value
             });
         }
 
@@ -143,10 +143,9 @@ function isValidDate(dateString) {
     return !isNaN(date.getTime());
 }
 
-
 // Função para calcular o total da carga horária cadastrada
 function calculaTotalCargaHoraria() {
-    const totalCargaH = itens.reduce((total, item) => total + parseFloat(item.CargaH || 0), 0)
+    const totalCargaH = itens.reduce((total, item) => total + parseFloat(item.cargaHoraria || 0), 0)
     document.querySelector('#total-cargaH').textContent = `${totalCargaH} h`
 }
 
