@@ -1,64 +1,68 @@
 // Declaração de variáveis
-let fname = document.querySelector('#fname'); // id
-let labelfname = document.querySelector('#labelfname')
+let fname = document.querySelector('#fname');
+let labelfname = document.querySelector('#labelfname');
 
 let lname = document.querySelector('#lname');
-let labellname = document.querySelector('#labellname')
+let labellname = document.querySelector('#labellname');
 
 let matricula = document.querySelector('#matricula');
-let labelmatricula = document.querySelector('#labelmatricula')
+let labelmatricula = document.querySelector('#labelmatricula');
 
 let password = document.querySelector('#password');
-let labelpassword = document.querySelector('#labelpassword')
+let labelpassword = document.querySelector('#labelpassword');
+
+let confirmPassword = document.querySelector('#confirmPassword');
+let labelconfirmPassword = document.querySelector('#labelconfirmPassword');
 
 let email = document.querySelector('#email');
 let phone = document.querySelector('#phone');
 let curso = document.querySelector('#curso');
+let perfil = "Aluno";
 
 // Variáveis para as Validações
-let validfname = false; // significa que os campos não estão preenchidos
-let validlname = false;
+// significa que os campos não estão preenchidos
 let validmatricula = false;
 let validpassword = false;
-
-// Validação do campo nome - se as letras digitadas forem menores que 3 muda a cor da label
-fname.addEventListener('keyup', () => {
-    if(fname.value.length <= 2){
-        labelfname.setAttribute('style', 'color: red')
-        labelfname.innerHTML = 'Primeiro Nome - Insira no mínimo 3 letras'
-        validfname = false
-    } else {
-        labelfname.setAttribute('style', 'color: blue')
-        labelfname.innerHTML = 'Primeiro Nome *'
-        validfname = true
-    }
-})
+let validConfirmPassword = false;
 
 // Validação do campo Matricula - se os caracteres digitados forem menores que 11 muda a cor da label
 matricula.addEventListener('keyup', () => {
     if(matricula.value.length <= 10){
-        labelmatricula.setAttribute('style', 'color: red')
-        labelmatricula.innerHTML = 'Matrícula - Insira no mínimo 11 caracteres'
-        validmatricula = false
+        labelmatricula.setAttribute('style', 'color: red');
+        labelmatricula.innerHTML = 'Matrícula - Insira no mínimo 11 caracteres';
+        validmatricula = false;
     } else {
-        labelmatricula.setAttribute('style', 'color: blue')
-        labelmatricula.innerHTML = 'Matrícula *'
-        validmatricula = true
+        labelmatricula.setAttribute('style', 'color: blue');
+        labelmatricula.innerHTML = 'Matrícula *';
+        validmatricula = true;
     }
-})
+});
 
 // Validação do campo senha - se os caracteres digitados forem menores que 5 muda a cor da label
 password.addEventListener('keyup', () => {
     if(password.value.length <= 5){
-        labelpassword.setAttribute('style', 'color: red')
-        labelpassword.innerHTML = 'Crie sua senha - Insira no mínimo 6 caracteres'
-        validpassword = false
+        labelpassword.setAttribute('style', 'color: red');
+        labelpassword.innerHTML = 'Crie sua senha - Insira no mínimo 6 caracteres';
+        validpassword = false;
     } else {
-        labelpassword.setAttribute('style', 'color: blue')
-        labelpassword.innerHTML = 'Crie sua senha *'
-        validpassword = true
+        labelpassword.setAttribute('style', 'color: blue');
+        labelpassword.innerHTML = 'Crie sua senha *';
+        validpassword = true;
     }
-})
+});
+
+// Validação do campo de confirmação de senha
+confirmPassword.addEventListener('keyup', () => {
+    if (confirmPassword.value !== password.value) {
+        labelconfirmPassword.setAttribute('style', 'color: red');
+        labelconfirmPassword.innerHTML = 'Confirme sua senha - As senhas não coincidem';
+        validConfirmPassword = false;
+    } else {
+        labelconfirmPassword.setAttribute('style', 'color: blue');
+        labelconfirmPassword.innerHTML = 'Senha validada *';
+        validConfirmPassword = true;
+    }
+});
 
 // Função para mostrar o Toast/Alert
 function showToast(toastId) {
@@ -70,12 +74,12 @@ function showToast(toastId) {
 // Função de Cadastrar usuário
 function cadastrar(){
 
-    if(validfname && validmatricula && validpassword){
+    if(validmatricula && validpassword && validConfirmPassword){
         
-        let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]') //criando um vetor para armazenar os dados do cadastro - localStorage do navegador
+        let listaAluno = JSON.parse(localStorage.getItem('listaAluno') || '[]'); //criando um vetor para armazenar os dados do cadastro - localStorage do navegador
         
         // Verifica se já existe um usuário com a mesma matrícula
-        let usuarioExistente = listaUser.some(user => user.matriculaCad === matricula.value);
+        let usuarioExistente = listaAluno.some(user => user.matricula === matricula.value);
         if (usuarioExistente) {
             event.preventDefault() // Previne o comportamento padrão do formulário
             showToast('existToast');
@@ -83,19 +87,20 @@ function cadastrar(){
         }
 
         // Adiciona o novo usuário à lista
-        listaUser.push(
+        listaAluno.push(
             {
                 fnameCad: fname.value,
                 lnameCad: lname.value,
-                matriculaCad: matricula.value,
-                passwordCad: password.value,
-                emailCad: email.value,
-                phoneCad: phone.value,
-                cursoCad: curso.value
+                matricula: matricula.value,
+                password: password.value,
+                email: email.value,
+                phone: phone.value,
+                curso: curso.value,
+                perfil: perfil
             }
-        )
+        );
 
-        localStorage.setItem('listaUser', JSON.stringify(listaUser)) //salvado o vetor no localStorage
+        localStorage.setItem('listaAluno', JSON.stringify(listaAluno)); //salvado o vetor no localStorage
         
         event.preventDefault()
         // Alert de sucesso no cadastro
@@ -103,7 +108,7 @@ function cadastrar(){
 
         // Função para dar um delay antes de ir pra tela de login
         setTimeout(function() { 
-            window.location.href = './index.html'
+            window.location.href = './index.html';
         }, 3000);
         
     }else {
