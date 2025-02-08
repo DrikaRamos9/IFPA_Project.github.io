@@ -117,3 +117,31 @@ function cadastrar(){
     }
 
 }
+
+// Função para exibir os cursos cadastrados
+function exibirCursos() {
+    // Recuperando lista de Cursos existentes do LocalStorage
+    const listaCursos = JSON.parse(localStorage.getItem('listaCursos')) || [];
+
+    const nomes = listaCursos.map(curso => curso.nome);
+
+    // Seleciona o elemento <select> do formulário
+    const selectCurso = document.getElementById('curso');
+
+    selectCurso.innerHTML = `
+        <option value=" " selected>Clique para selecionar seu curso</option>
+    `;
+
+    // Adiciona os cursos como opções no <select>
+    nomes.forEach(nome => {
+        const option = document.createElement('option');
+        option.value = nome;
+        option.textContent = nome;
+        selectCurso.appendChild(option);
+    });
+}
+
+// Função de carregar as informações para exibição
+window.addEventListener('load', function () {
+    exibirCursos();
+});

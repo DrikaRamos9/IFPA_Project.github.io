@@ -5,8 +5,7 @@ function entrar() {
     let inputsenha = document.querySelector('#inputsenha');
 
     // Lista de usuários salvos no localstorage
-    listaUser
-     = [];
+    listaUser = [];
 
     // Criando objeto para manipulação
     let userValid = {
@@ -56,7 +55,7 @@ function entrar() {
             window.location.href = './TelaConsultaCoordenador.html';
 
         } else if (userValid.perfil === 'Aluno') {
-            window.location.href = './TelaConsulta.html';
+            window.location.href = './TelaConsultaAluno.html';
 
         } else {
             alert('Perfil não reconhecido!');

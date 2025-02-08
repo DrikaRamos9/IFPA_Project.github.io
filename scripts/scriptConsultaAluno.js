@@ -206,5 +206,5 @@ function DadosPessoais(){
 }
 
 function Inicio(){
-    window.location.href = './TelaConsulta.html'
+    window.location.href = './TelaConsultaAluno.html'
 }

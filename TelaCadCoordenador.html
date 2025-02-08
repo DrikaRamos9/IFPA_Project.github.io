@@ -10,80 +10,120 @@
 
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: white;
         }
         .container {
             margin-top: 50px;
         }
+
+        #form-coordenador {
+            background-color: rgba(196, 197, 206, 0.151);
+            padding: 20px;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+
+        .form-select{
+            background-color: rgba(196, 197, 206, 0.151);
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+
+        .btn {
+            width: 100%;
+        }
+
+        .editar-coordenador, .remover-coordenador{
+            width: auto;
+        }
     </style>
+
 </head>
 
 <body>
     <div class="container">
-        <h2 class="text-center mb-4">Cadastrar Novo Coordenador</h2>
-
-        <!-- Mensagem de alerta -->
+        <!-- Alerta de sucesso - exibição -->
         <div id="mensagem-alerta" class="alert d-none" role="alert"></div>
-
-        <!-- Formulário de cadastro -->
-        <form id="form-coordenador">
-            <!-- Nome -->
-            <div class="mb-3">
-                <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" placeholder="Digite o nome do coordenador" required>
-            </div>
-            
-            <!-- Email -->
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Digite o email do coordenador" required>
-            </div>
-
-            <!-- Curso e Matrícula -->
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="curso" class="form-label">Curso</label>
-                    <input type="text" class="form-control" id="curso" placeholder="Digite o curso do coordenador" required>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="matricula" class="form-label">Matrícula</label>
-                    <input type="number" class="form-control" id="matricula" placeholder="Digite a matrícula do servidor" required>
-                </div>
-            </div>
-
-            <!-- Senha -->
-            <div class="mb-3">
-                <label for="password" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="senha" placeholder="Crie uma senha" required>
-            </div>
-            
-            <!-- Botão -->
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-        </form>
-
+        
         <h2 class="text-center my-4">Lista de Coordenadores</h2>
         <!-- Tabela -->
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Curso</th>
-                    <th scope="col">Matrícula</th>
-                    <th scope="col">Ações</th>
-                </tr>
-            </thead>
-            <tbody id="table-coordenadores">
-                <!-- Coordenadores cadastrados serão listados aqui -->
-            </tbody>
-        </table>
+        <div class="table-responsive"> 
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Curso</th>
+                        <th scope="col">Matrícula</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="table-coordenadores">
+                    <!-- Coordenadores serão listados aqui -->
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+
+        <!-- Botão -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cadCoordenadorModal"> + Cadastrar Novo Coordenador</button>
+
+        <!-- Modal formulário -->
+        <div class="modal fade" id="cadCoordenadorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-body">
+
+                        <!-- Mensagem de alerta -->
+                        <div id="mensagem-alerta-modal" class="alert d-none" role="alert"></div>
+
+                        <form id="form-coordenador">
+                            <!-- Nome -->
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Digite o nome do coordenador" required>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Digite o email do coordenador" required>
+                            </div>
+
+                            <!-- Curso e Matrícula -->
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="curso" class="form-label">Curso</label>
+                                    <select class="form-select" id="curso" name="curso">
+                                        <option value="" selected>Clique para selecionar seu curso</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="matricula" class="form-label">Matrícula</label>
+                                    <input type="number" class="form-control" id="matricula" placeholder="Digite a matrícula do servidor" required>
+                                </div>
+                            </div>
+
+                            <!-- Senha -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="senha" placeholder="Crie uma senha" required>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- JavaScript -->
-    <script src="./scripts/scriptCadCoordenador.js" async></script>
+
+    <script src="./scripts/scriptCadCoordenador.js"></script>
 </body>
 </html>

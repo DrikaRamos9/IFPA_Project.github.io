@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    overflow-x: hidden;
     padding-top: 3rem; /* Adiciona espaçamento para evitar sobreposição do formulário com a navbar */
 }
 

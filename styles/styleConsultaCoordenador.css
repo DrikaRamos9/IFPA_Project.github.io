@@ -1,15 +1,15 @@
-/* NavBar - Menu de navegação */
+/* NavBar - Menu de Naveação */
 .navbar{
     background-color: #414e79;
 }
 
-.navbar .navbar-brand{ /* Logo no canto esquerdo da navbar */
+.navbar-brand{ /* Logo no canto esquerdo da navbar */
     color: white;
     font-family: "Contrail One", sans-serif;
 }
     
-.navbar .nav-item i { /* Tamanho e cor dos icones da navbar */
-    font-size: 20px;
+ .navbar .nav-item i { /* Tamanho e cor dos icones da navbar */
+    font-size: 17px;
     color: white;
     margin-right: 5px;
 }

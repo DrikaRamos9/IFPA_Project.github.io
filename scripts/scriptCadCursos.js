@@ -1,6 +1,6 @@
 // Função para exibir mensagens de alerta
-function exibirMensagem(tipo, texto) {
-    const alerta = document.getElementById('mensagem-alerta');
+function exibirMensagem(tipo, texto, elementoAlvo = 'mensagem-alerta') {
+    const alerta = document.getElementById(elementoAlvo);
     alerta.className = `alert alert-${tipo}`; // Define o tipo de mensagem (success, danger, etc.)
     alerta.textContent = texto; // Define o texto da mensagem
     alerta.classList.remove('d-none'); // Torna a mensagem visível
@@ -24,7 +24,7 @@ document.getElementById('form-curso').addEventListener('submit', function(event)
 
     // Validação caso não seja preenchido todas as informações
     if (!nome || !codigo || modalidade === " " || coordenador === " " || !cargaHoraria) {
-        exibirMensagem('danger', 'Por favor, preencha todos os campos obrigatórios!');
+        exibirMensagem('danger', 'Por favor, preencha todos os campos obrigatórios!', 'mensagem-alerta-modal');
         return;
     }
 
@@ -43,11 +43,11 @@ document.getElementById('form-curso').addEventListener('submit', function(event)
     // Atualizando a tabela - chamando a função
     adicionarCursoTabela(curso);
 
-    // Exibindo mensagem de sucesso
-    exibirMensagem('success', 'Curso cadastrado com sucesso!');
-
     // Limpando o formulário
     document.getElementById('form-curso').reset();
+
+    // Exibindo mensagem de sucesso no modal
+    exibirMensagem('success', 'Curso cadastrado com sucesso!', 'mensagem-alerta-modal');
 });
 
 // Função para adicionar um curso na tabela
@@ -61,11 +61,17 @@ function adicionarCursoTabela(curso) {
         <td>${curso.modalidade}</td>
         <td>${curso.coordenador}</td>
         <td>
+            <button class="btn btn-primary btn-sm editar-curso">Editar</button>
             <button class="btn btn-danger btn-sm remover-curso">Remover</button>
         </td>
     `;
 
     lista.appendChild(row);
+
+    // Adiciona evento ao botão de editar
+    row.querySelector('.editar-curso').addEventListener('click', function () {
+        editarCurso(curso, row);
+    });
 
     // Adiciona evento ao botão de remoção
     row.querySelector('.remover-curso').addEventListener('click', function () {

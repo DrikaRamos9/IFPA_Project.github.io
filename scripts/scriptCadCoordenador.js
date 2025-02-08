@@ -1,6 +1,6 @@
 // Função para exibir mensagens de alerta
-function exibirMensagem(tipo, texto) {
-    const alerta = document.getElementById('mensagem-alerta');
+function exibirMensagem(tipo, texto, elementoAlvo = 'mensagem-alerta') {
+    const alerta = document.getElementById(elementoAlvo);
     alerta.className = `alert alert-${tipo}`; // Define o tipo de mensagem (success, danger, etc.)
     alerta.textContent = texto; // Define o texto da mensagem
     alerta.classList.remove('d-none'); // Torna a mensagem visível
@@ -24,6 +24,12 @@ document.getElementById('form-coordenador').addEventListener('submit', function(
 
     let perfil = "Coordenador";
 
+    /** Validação caso não seja preenchido todas as informações
+    if (!nome || !matricula || email === " " || senha === " ") {
+        exibirMensagem('danger', 'Por favor, preencha todos os campos obrigatórios!', 'mensagem-alerta-modal');
+        return;
+    } */
+
     // Criando um objeto para o coordenador
     const coordenador = { nome, email, curso, matricula, perfil, senha };
 
@@ -40,7 +46,7 @@ document.getElementById('form-coordenador').addEventListener('submit', function(
     adicionarCoordenadorTabela(coordenador);
 
     // Exibindo mensagem de sucesso
-    exibirMensagem('success', 'Coordenador cadastrado com sucesso!');
+    exibirMensagem('success', 'Coordenador cadastrado com sucesso!', 'mensagem-alerta-modal');
 
     // Limpando o formulário
     document.getElementById('form-coordenador').reset();
@@ -57,11 +63,17 @@ function adicionarCoordenadorTabela(coordenador) {
         <td>${coordenador.curso}</td>
         <td>${coordenador.matricula}</td>
         <td>
+            <button class="btn btn-primary btn-sm editar-coordenador">Editar</button>
             <button class="btn btn-danger btn-sm remover-coordenador">Remover</button>
         </td>
     `;
 
     lista.appendChild(row); //atualiza a tabela inserindo nova linha
+
+    // Adiciona evento ao botão de editar
+    row.querySelector('.editar-coordenador').addEventListener('click', function () {
+        editarCurso(curso, row);
+    });
 
     // Adiciona evento ao botão de remoção
     row.querySelector('.remover-coordenador').addEventListener('click', function () {
@@ -87,8 +99,45 @@ function removerCoordenador(matricula, row) {
     exibirMensagem('success', 'Coordenador removido com sucesso!');
 }
 
-// Carregando a lista de coordenadores do LocalStorage ao carregar a página
-window.addEventListener('load', function() {
+// Função para exibir os cursos cadastrados
+function exibirCursos() {
+    // Recuperando lista de Cursos existentes do LocalStorage
+    const listaCursos = JSON.parse(localStorage.getItem('listaCursos')) || [];
+
+    const nomes = listaCursos.map(curso => curso.nome);
+
+    // Seleciona o elemento <select> do formulário
+    const selectCurso = document.getElementById('curso');
+
+    selectCurso.innerHTML = `
+        <option value=" " selected>Clique para selecionar o curso</option>
+    `;
+
+    // Adiciona os cursos como opções no <select>
+    nomes.forEach(nome => {
+        const option = document.createElement('option');
+        option.value = nome;
+        option.textContent = nome;
+        selectCurso.appendChild(option);
+    });
+}
+
+// Função de carregar as informações para exibição
+window.addEventListener('load', function () {
+    exibirCursos();
+
     const coordenadores = JSON.parse(localStorage.getItem('listaCoordenadores')) || [];
     coordenadores.forEach(adicionarCoordenadorTabela);
 });
+
+
+// Função de exibição do Modal
+var cadCoordenadorModal = document.getElementById('cadCoordenadorModal');
+
+cadCoordenadorModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget;
+    var recipient = button.getAttribute('data-bs-whatever');
+    var modalBodyInput = cadCoordenadorModal.querySelector('.modal-body input');
+
+    modalBodyInput.value = recipient;
+})

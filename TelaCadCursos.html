@@ -27,6 +27,10 @@
             width: 100%;
         }
 
+        .editar-curso, .remover-curso{
+            width: auto;
+        }
+
         .form-control, .form-select {
             background-color: rgba(196, 197, 206, 0.151);
         }
@@ -36,26 +40,27 @@
 
 <body>
     <div class="container">
-
         <!-- Alerta de sucesso - exibição -->
         <div id="mensagem-alerta" class="alert d-none" role="alert"></div>
         
         <h2 class="text-center my-4">Lista de cursos cadastrados</h2>
         <!-- Tabela -->
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Código</th>
-                    <th scope="col">Modalidade</th>
-                    <th scope="col">Coordenador</th>
-                    <th scope="col">Ações</th>
-                </tr>
-            </thead>
-            <tbody id="table-cursos">
-                <!-- Cursos serão listados aqui -->
-            </tbody>
-        </table>
+        <div class="table-responsive"> 
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Modalidade</th>
+                        <th scope="col">Coordenador</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="table-cursos">
+                    <!-- Cursos serão listados aqui -->
+                </tbody>
+            </table>
+        </div>
 
         <hr>
 
@@ -67,8 +72,9 @@
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <!-- Alerta de sucesso - exibição -->
-                        <div id="mensagem-alerta" class="alert d-none" role="alert"></div>
+
+                        <!-- Mensagem de alerta -->
+                        <div id="mensagem-alerta-modal" class="alert d-none" role="alert"></div>
 
                         <form id="form-curso">
                             <!-- Nome do curso -->
@@ -111,6 +117,7 @@
                             
                             <button type="submit" class="btn btn-primary">Cadastrar curso</button>
                         </form>
+                        
                     </div>
                 </div>
             </div>
