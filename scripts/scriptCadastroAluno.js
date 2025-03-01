@@ -72,16 +72,20 @@ function showToast(toastId) {
 }
 
 // Função de Cadastrar usuário
-function cadastrar(){
+async function cadastrar() {
+    event.preventDefault()
 
     if(validmatricula && validpassword && validConfirmPassword){
         
+        // Criptografar senha antes de armazenar
+        //let senhaCriptografada = await hashPassword(password.value);
+
         let listaAluno = JSON.parse(localStorage.getItem('listaAluno') || '[]'); //criando um vetor para armazenar os dados do cadastro - localStorage do navegador
         
         // Verifica se já existe um usuário com a mesma matrícula
         let usuarioExistente = listaAluno.some(user => user.matricula === matricula.value);
         if (usuarioExistente) {
-            event.preventDefault() // Previne o comportamento padrão do formulário
+            //event.preventDefault() // Previne o comportamento padrão do formulário
             showToast('existToast');
             return; // Interrompe o cadastro se o usuário já existe
         }
@@ -89,10 +93,10 @@ function cadastrar(){
         // Adiciona o novo usuário à lista
         listaAluno.push(
             {
-                fnameCad: fname.value,
-                lnameCad: lname.value,
+                fname: fname.value,
+                lname: lname.value,
                 matricula: matricula.value,
-                password: password.value,
+                password: password.value, // Armazena a senha criptografada
                 email: email.value,
                 phone: phone.value,
                 curso: curso.value,
@@ -102,14 +106,13 @@ function cadastrar(){
 
         localStorage.setItem('listaAluno', JSON.stringify(listaAluno)); //salvado o vetor no localStorage
         
-        event.preventDefault()
         // Alert de sucesso no cadastro
         showToast('successToast');
 
         // Função para dar um delay antes de ir pra tela de login
         setTimeout(function() { 
             window.location.href = './index.html';
-        }, 3000);
+        }, 2000);
         
     }else {
         // Alert de falha no cadastro
@@ -129,7 +132,7 @@ function exibirCursos() {
     const selectCurso = document.getElementById('curso');
 
     selectCurso.innerHTML = `
-        <option value=" " selected>Clique para selecionar seu curso</option>
+        <option value="" selected>Clique para selecionar seu curso</option>
     `;
 
     // Adiciona os cursos como opções no <select>

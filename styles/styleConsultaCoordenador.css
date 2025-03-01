@@ -29,6 +29,10 @@
     margin-top: 30px;
 }
 
+.row {
+    justify-content: center;
+}
+
 .col-md-3 {
     margin-bottom: 1em;
 }
@@ -49,25 +53,34 @@
     border-radius: 5px;
 }
 
-/* Adiciona um pequeno espaço na margem esquerda entre a caixa de pesquisa e os outros elementos */
-.search-box { 
-    margin-left: 15px;
-    margin-top: 20px;
-    margin-bottom: 15px;
+.search-box {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px auto; /* Margem superior e inferior */
+    max-width: 500px; /* Define um tamanho máximo */
 }
 
 .search-box input {
-    padding-right: 35px;
-    min-height: 38px;
-    width: 300px;
+    flex: 1; /* Faz o input crescer para ocupar o espaço disponível */
+    padding: 10px;
     border: none;
     background: #e8e5eb;
     border-radius: 3px !important;
 }
 
 .search-box input:focus {		
-    background: #ffffff;
+    background: #bfbcc2;
     box-shadow: none;
+}
+
+.search-box span {
+    padding: 10px;
+    border: none;
+    margin-left: 10px;
+    background-color: #414e79;
+    color: white;
+    border-radius: 3px;
+    width: 20%;
 }
 
 /*Tabela*/

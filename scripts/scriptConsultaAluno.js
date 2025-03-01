@@ -1,11 +1,12 @@
 const modal = document.querySelector('.modal-container')
 const tbody = document.querySelector('tbody')
 
-const scategoria = document.querySelector('#Categoria')
-const stitulo = document.querySelector('#Titulo')
-const scargaH = document.querySelector('#cargaHoraria')
-const sDataR = document.querySelector('#dataRealizacao')
-const sStatus = 'teste Concluido'
+const scategoria = document.getElementById('Categoria')
+const stitulo = document.getElementById('Titulo')
+const scargaH = document.getElementById('cargaHoraria')
+const sDataR = document.getElementById('dataRealizacao')
+const sDocument = document.getElementById('uploadCertificado')
+const sStatus = 'Em análise'
 
 const btnSalvar = document.querySelector('#btn-salvar')
 
@@ -45,10 +46,10 @@ function editItem(index) {
 
 // Botão de deletar item
 function deleteItem(index) {
-    itens.splice(index, 1)
+    itens = itens.filter((_, i) => i !== index);
     //alert("Atividade excluída!")
-    setItensBD()
-    loadItens()
+    setItensBD();
+    loadItens();
 }
 
 function formatarData(dataISO) {
@@ -58,7 +59,6 @@ function formatarData(dataISO) {
     // Retornar no formato DD/MM/AAAA
     return `${dia}/${mes}/${ano}`;
 }
-
 
 // Inserir os dados na tabela
 function insertItem(item, index) {
@@ -89,48 +89,70 @@ btnSalvar.onclick = e => {
         return;
     }
 
-    if (isNaN(scargaH.value)) {
-        alert("Carga horária inválida!");
+    // Verificando se o número é positivo
+    const cargaHoraria = parseFloat(scargaH.value.trim());
+    if (isNaN(cargaHoraria) || cargaHoraria <= 0) {
+        alert("Carga horária inválida! Insira um número positivo.");
         return;
     }
 
+    // Validando formato da data
     if (!isValidDate(sDataR.value)) {
         alert("Data inválida!");
         return;
     }
 
-    try {
-        if (id !== undefined) {
-            // Atualizar item existente
-            itens[id] = {
-                'Categoria': scategoria.value,
-                'Titulo': stitulo.value,
-                'cargaHoraria': scargaH.value,
-                'dataRealizacao': sDataR.value
-            };
-        } else {
-            // Adicionar novo item
-            itens.push({
-                'Categoria': scategoria.value,
-                'Titulo': stitulo.value,
-                'cargaHoraria': scargaH.value,
-                'dataRealizacao': sDataR.value
-            });
+    const novoItem = {
+        'Categoria': scategoria.value,
+        'Titulo': stitulo.value,
+        'cargaHoraria': cargaHoraria,
+        'dataRealizacao': sDataR.value,
+        'status': sStatus,
+        'documento': null // Documento será atualizado após leitura do arquivo
+    };
+
+
+    // Verificar se um arquivo foi anexado
+    if (sDocument.files.length > 0) {
+        const file = sDocument.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            novoItem.documento = e.target.result; // Armazena o arquivo como Base64
+            salvarItem(novoItem);
+        };
+
+        reader.readAsDataURL(file);
+    } else {
+        salvarItem(novoItem);
+    }
+
+    // Função para salvar o item no vetor e no localStorage
+    function salvarItem(novoItem) {
+        try {
+            if (id !== undefined) {
+                // Atualizar item existente
+                itens[id] = novoItem;
+            } else {
+                // Adicionar novo item
+                itens.push(novoItem);
+            }
+
+            // Persistência e atualização da UI
+            setItensBD();
+            loadItens();
+            modal.classList.remove('active'); // Fecha modal depois de carregar os dados
+
+            // Reset do ID
+            id = undefined;
+
+            // Exibir feedback de sucesso
+            alert("Atividade cadastrada com sucesso!");
+
+        } catch (error) {
+            console.error("Erro ao salvar os dados:", error);
+            alert("Erro ao salvar os dados! Tente novamente.");
         }
-
-        // Exibir feedback de sucesso
-        alert("Atividade cadastrada com sucesso!");
-
-        // Persistência e atualização da UI
-        setItensBD();
-        modal.classList.remove('active');
-        loadItens();
-
-        // Reset do ID
-        id = undefined;
-    } catch (error) {
-        console.error("Erro ao salvar os dados:", error);
-        alert("Erro ao salvar os dados! Tente novamente.");
     }
 };
 
@@ -145,8 +167,17 @@ function isValidDate(dateString) {
 
 // Função para calcular o total da carga horária cadastrada
 function calculaTotalCargaHoraria() {
-    const totalCargaH = itens.reduce((total, item) => total + parseFloat(item.cargaHoraria || 0), 0)
-    document.querySelector('#total-cargaH').textContent = `${totalCargaH} h`
+    const totalCargaH = itens.reduce((total, item) => total + parseFloat(item.cargaHoraria || 0), 0);
+    document.querySelector('#total-cargaH').textContent = `${totalCargaH} h`;
+
+    const progresso = (totalCargaH * 100) / 400; //precisa colocar a carga horária máxima de cada curso
+    document.querySelector('#progresso').textContent = `${Math.floor(progresso)}%`;
+
+    if (progresso >= 50) {
+        document.querySelector('#descProgresso').innerHTML = `Seu progresso está regular.`;
+    } else {
+        document.querySelector('#descProgresso').innerHTML = `Seu progresso está abaixo do recomendado.`;
+    }
 }
 
 // Função para calcular o número de atividades registradas
@@ -162,8 +193,6 @@ let logado = document.querySelector('#logado')
 // Usa a matrícula do aluno como identificador único
 const alunoId = userLogado.user;
 
-// Condição para o usuário não logado não ter acesso a página
-// desativa essa linha caso queira editar... ela ativa faz com que o acesso à página não ocorra sem login
 if (localStorage.getItem('token') === null) {
     alert('Você não está logado.');
 

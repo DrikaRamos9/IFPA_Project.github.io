@@ -146,6 +146,7 @@
             <th>Categoria</th>
             <th>Carga Horária</th>
             <th>Data de Realização</th>
+            <th>Status</th>
             <th class="acao">Avaliar</th>
           </tr>
         </thead>
@@ -156,7 +157,31 @@
         </tbody>
       </table>
     </div>
-  
+  </div>
+
+  <!-- Modal de Avaliar Atividade -->
+  <div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Documento Anexado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body text-center">
+          <div id="documentPreview">
+            <!-- Visualização do documento será carregada aqui -->
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" onclick="aprovarDocumento()">Aprovar</button>
+          <button type="button" class="btn btn-danger" onclick="reprovarDocumento()">Reprovar</button>
+        </div>
+
+      </div>
+    </div>
   </div>
 
   <!-- Bootstrap JS -->
@@ -177,26 +202,78 @@
         window.location.href = './TelaConsultaCoordenador.html'
     }
 
+    function formatarData(dataISO) {
+      // Dividir a string ISO (YYYY-MM-DD) em partes
+      const [ano, mes, dia] = dataISO.split('-');
+      
+      // Retornar no formato DD/MM/AAAA
+      return `${dia}/${mes}/${ano}`;
+    }
+
+    function carregarDocumento() {
+      // Obtém o parâmetro 'index' da URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const index = urlParams.get("index");
+      // Busca a lista de alunos do localStorage
+      const listaAlunos = JSON.parse(localStorage.getItem("listaAluno")) || [];
+      // Recupera o aluno pelo índice e exibe as informações
+      const aluno = listaAlunos[index];
+
+      // Carregar atividades específicas do aluno
+      const atividades = JSON.parse(localStorage.getItem(`dbAtividades_${aluno.matricula}`)) || [];
+      
+      // Verifica se a atividade no índice existe
+      if (!atividades[index] || !atividades[index].documento) {
+          alert("Nenhum documento anexado para essa atividade.");
+          return;
+      }
+
+      const fileData = atividades[index].documento;
+      const documentPreview = document.getElementById('documentPreview');
+
+      if (fileData) {
+        if (fileData.startsWith('data:application/pdf')) {
+          documentPreview.innerHTML = `<embed src="${fileData}" type="application/pdf" width="100%" height="400px" />`;
+        } else if (fileData.startsWith('data:image')) {
+          documentPreview.innerHTML = `<img src="${fileData}" class="img-fluid" alt="Imagem do Documento">`;
+        } else {
+          documentPreview.innerHTML = `<p>Formato de arquivo não suportado.</p>`;
+        }
+      }
+
+      // Exibe o modal com o documento carregado
+      const modal = document.getElementById('documentModal');
+      modal.classList.add('active');
+    }
+
+    function aprovarDocumento() {
+      alert('Documento Aprovado!');
+    }
+
+    function reprovarDocumento() {
+      alert('Documento Reprovado!');
+    }
+
     // Função de exibição dos dados do aluno
     document.addEventListener("DOMContentLoaded", function() {
       // Obtém o parâmetro 'index' da URL
       const urlParams = new URLSearchParams(window.location.search);
       const index = urlParams.get("index");
 
-      // Busca a lista de usuários do localStorage
-      const listaUser = JSON.parse(localStorage.getItem("listaUser")) || [];
+      // Busca a lista de alunos do localStorage
+      const listaAlunos = JSON.parse(localStorage.getItem("listaAluno")) || [];
 
-      // Recupera o usuário pelo índice e exibe as informações
-      const usuario = listaUser[index];
-      if (usuario) {
-        document.getElementById("nome").textContent = `${usuario.fnameCad} ${usuario.lnameCad}`;
-        document.getElementById("matricula").textContent = usuario.matriculaCad;
-        document.getElementById("curso").textContent = usuario.cursoCad;
-        document.getElementById("semestre").textContent = usuario.semestre || "N/A"; // Defina como "N/A" se não houver dados
-        document.getElementById("turma").textContent = usuario.turma || "N/A";
+      // Recupera o aluno pelo índice e exibe as informações
+      const aluno = listaAlunos[index];
+      if (aluno) {
+        document.getElementById("nome").textContent = `${aluno.fname} ${aluno.lname}`;
+        document.getElementById("matricula").textContent = aluno.matricula;
+        document.getElementById("curso").textContent = aluno.curso;
+        document.getElementById("semestre").textContent = aluno.semestre || "N/A"; // Defina como "N/A" se não houver dados
+        document.getElementById("turma").textContent = aluno.turma || "N/A";
 
         // Carregar atividades específicas do aluno
-        const atividades = JSON.parse(localStorage.getItem(`dbAtividades_${usuario.matriculaCad}`)) || [];
+        const atividades = JSON.parse(localStorage.getItem(`dbAtividades_${aluno.matricula}`)) || [];
         const atividadesTableBody = document.getElementById("atividades-table-body");
 
         // Preencher a tabela com as atividades do aluno
@@ -207,9 +284,10 @@
           row.innerHTML = `
             <td>${atividade.Titulo}</td>
             <td>${atividade.Categoria}</td>
-            <td>${atividade.CargaH}</td>
-            <td>${atividade.DataR}</td>
-            <td><button class="btn btn-primary">Avaliar</button></td>
+            <td>${atividade.cargaHoraria}</td>
+            <td>${formatarData(atividade.dataRealizacao)}</td>
+            <td>${atividade.status}</td>
+            <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#documentModal" onclick="carregarDocumento()"">Avaliar</button></td>
           `;
           atividadesTableBody.appendChild(row);
         });

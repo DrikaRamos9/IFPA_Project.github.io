@@ -57,7 +57,7 @@
     
     <!-- Seção de parágrafo de texto -->
     <div class="head-container-fluid">
-        <h3 id="logado"> </h3> <!-- Nome da pessoa logada -->
+        <h3 id="logado"> Bem Vindo Coordenador </h3> <!-- Nome da pessoa logada -->
         <p>Esta é a seção com informações gerais sobre as atividades complementares cadastradas pelos alunos.</p>
     </div>
 
@@ -68,12 +68,12 @@
             <div class="col-md-3">
                 <div class="card text-center" >
                 <div class="card-header">
-                    Atividades Cadastradas
+                    Alunos Cadastrados
                 </div>
 
                 <div class="card-body">
-                    <h3 class="card-title">0</h3>
-                    <p class="card-text">Existem 0 atividade(s) cadastradas no sistema.</p>
+                    <h3 class="card-title" id="TotalAlunos">0</h3>
+                    <p class="card-text" id="descTotalAlunos">Existem 0 alunos(s) cadastradas no sistema.</p>
                 </div>
                 </div>
             </div>
@@ -81,12 +81,12 @@
             <div class="col-md-3">
                 <div class="card text-center" >
                 <div class="card-header">
-                    Atividades Pendentes
+                    Alunos Pendentes
                 </div>
 
                 <div class="card-body">
                     <h3 class="card-title">0</h3>
-                    <p class="card-text">0 atividade(s) aguardam análise.</p>
+                    <p class="card-text">0 alunos(s) aguardam análise de atividades complementares.</p>
                 </div>
                 </div>
             </div>
@@ -94,25 +94,12 @@
             <div class="col-md-3">
                 <div class="card text-center" >
                 <div class="card-header">
-                    Atividades em Análise
+                    Alunos Aprovados
                 </div>
 
                 <div class="card-body">
                     <h3 class="card-title">0</h3>
-                    <p class="card-text">0 atividade(s) estão em análise.</p>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card text-center" >
-                <div class="card-header">
-                    Atividades Analisadas
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title" id="total-cargaH">0</h3>
-                    <p class="card-text" id="total-atividades">0 atividade(s) foram analisadas.</p>
+                    <p class="card-text">0 aluno(s) com a carga horária homologada.</p>
                 </div>
                 </div>
             </div>
@@ -120,11 +107,15 @@
         </div>
     </div>
 
+    <hr>
+
     <!-- Barra de Pesquisa -->
-    <form class="search-box d-flex">
-        <input class="form-control me-2" type="text" placeholder="Search">
-        <button class="btn btn-primary" type="button">Pesquisar</button>
-    </form>
+    <div class="barraPesquisa">
+        <form class="search-box">
+            <span class="input-group-text" id="addon-wrapping">Pesquisar</span>
+            <input class="form-control me-2" type="text" placeholder="Search">
+        </form>
+    </div>
 
     <!-- Seção da Tabela -->
     <div id="table-container" class="container mt-3">

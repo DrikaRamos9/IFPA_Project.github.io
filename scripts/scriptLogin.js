@@ -1,11 +1,11 @@
 // Função para efetuar o login
-function entrar() {
+async function entrar() {
     // Declarado variáveis do input
     let inputuser = document.querySelector('#inputuser');
     let inputsenha = document.querySelector('#inputsenha');
 
-    // Lista de usuários salvos no localstorage
-    listaUser = [];
+    // Pega a lista de users do localStorage
+    let listaUser = JSON.parse(localStorage.getItem('listaAluno')) || [];
 
     // Criando objeto para manipulação
     let userValid = {
@@ -16,14 +16,11 @@ function entrar() {
         perfil: ''
     };
 
-    // Pega a lista de users do localstorage
-    listaUser = JSON.parse(localStorage.getItem('listaAluno'));
-
     listaUser.forEach((item) => {
         if(inputuser.value == item.matricula && inputsenha.value == item.password){
             userValid = {
-                nome: item.fnameCad,
-                sobrenome: item.lnameCad,
+                nome: item.fname,
+                sobrenome: item.lname,
                 user: item.matricula,
                 senha: item.password,
                 perfil: item.perfil
