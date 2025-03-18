@@ -6,7 +6,7 @@ const stitulo = document.getElementById('Titulo')
 const scargaH = document.getElementById('cargaHoraria')
 const sDataR = document.getElementById('dataRealizacao')
 const sDocument = document.getElementById('uploadCertificado')
-const sStatus = 'Em análise'
+let sStatus = 'Em análise'
 
 const btnSalvar = document.querySelector('#btn-salvar')
 
@@ -105,7 +105,7 @@ btnSalvar.onclick = e => {
     const novoItem = {
         'Categoria': scategoria.value,
         'Titulo': stitulo.value,
-        'cargaHoraria': cargaHoraria,
+        'cargaHoraria': scargaH.value,
         'dataRealizacao': sDataR.value,
         'status': sStatus,
         'documento': null // Documento será atualizado após leitura do arquivo
