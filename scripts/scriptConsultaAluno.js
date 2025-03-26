@@ -6,7 +6,7 @@ const stitulo = document.getElementById('Titulo')
 const scargaH = document.getElementById('cargaHoraria')
 const sDataR = document.getElementById('dataRealizacao')
 const sDocument = document.getElementById('uploadCertificado')
-let sStatus = 'Em análise'
+let  sStatus = 'Em análise'
 
 const btnSalvar = document.querySelector('#btn-salvar')
 
@@ -69,7 +69,7 @@ function insertItem(item, index) {
         <td>${item.Titulo}</td>
         <td>${item.cargaHoraria} h</td>
         <td>${formatarData(item.dataRealizacao)}</td>
-        <td id="Status">${sStatus}</td>
+        <td id="Status">${item.status}</td>
         <td class="acao">
         <button onclick="editItem(${index})"><i class='bx bx-edit' ></i></button>
         </td>
@@ -165,12 +165,21 @@ function isValidDate(dateString) {
     return !isNaN(date.getTime());
 }
 
-// Função para calcular o total da carga horária cadastrada
-function calculaTotalCargaHoraria() {
-    const totalCargaH = itens.reduce((total, item) => total + parseFloat(item.cargaHoraria || 0), 0);
-    document.querySelector('#total-cargaH').textContent = `${totalCargaH} h`;
+// Função para calcular o progresso das atividades
+function calculaProgressoAtvs() {
+    // Filtra apenas as atividades com status 'Aprovada'
+    let atvsAprovadas = itens.filter(item => item.status === 'Aprovada');
+    let totalAprovadas = atvsAprovadas.reduce((total, item) => total + parseFloat(item.cargaHoraria || 0), 0);
+    document.querySelector('#total-AtvAprovada').textContent = `${totalAprovadas} h`;
 
-    const progresso = (totalCargaH * 100) / 400; //precisa colocar a carga horária máxima de cada curso
+    // Filtra apenas as atividades com status 'Em análise'
+    let atvsEmAnalise = itens.filter(item => item.status === 'Em análise');
+    let totalEmAnalise = atvsEmAnalise.reduce((total, item) => total + parseFloat(item.cargaHoraria || 0), 0);
+    document.querySelector('#total-AtvEmAnalise').textContent = `${totalEmAnalise} h`;
+    document.querySelector('#total-AtvEmAnalise2').textContent = `Você tem ${atvsEmAnalise.length} atividade(s) aguardando análise.`;
+    
+    // Calcula a porcentagem do card de progresso
+    const progresso = (totalAprovadas * 100) / 400; //precisa colocar a carga horária máxima de cada curso
     document.querySelector('#progresso').textContent = `${Math.floor(progresso)}%`;
 
     if (progresso >= 50) {
@@ -178,12 +187,6 @@ function calculaTotalCargaHoraria() {
     } else {
         document.querySelector('#descProgresso').innerHTML = `Seu progresso está abaixo do recomendado.`;
     }
-}
-
-// Função para calcular o número de atividades registradas
-function calculaTotalAtividades() {
-    const totalAtividades = itens.length
-    document.querySelector('#total-atividades').textContent = `Você tem ${totalAtividades} atividade(s) aguardando análise.`
 }
 
 // Pega os dados de usuário armazenados no webStorage
@@ -216,8 +219,7 @@ function loadItens() {
         insertItem(item, index)
     })
 
-    calculaTotalCargaHoraria() // Atualiza o total da carga horária
-    calculaTotalAtividades() // Atualiza o total de atividades registradas na tabela
+    calculaProgressoAtvs() // Atualiza o total da carga horária
 }
 
 // Carrega dados

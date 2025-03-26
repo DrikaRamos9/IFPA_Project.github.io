@@ -292,6 +292,10 @@
       localStorage.setItem(`dbAtividades_${aluno.matricula}`, JSON.stringify(atividades));
 
       alert(`Atividade ${novoStatus}!`);
+
+      // 🔄 Atualiza todas as telas automaticamente
+      localStorage.setItem("atualizarTelaAluno", "true");
+
       location.reload(); // Atualiza a página para refletir a mudança
     }
 
